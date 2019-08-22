@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +86,7 @@
 <meta property="og:url" content="#/2019/08/21/numpy知识点梳理/index.html">
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="Numpy相关知识点 numpy中的矩阵和向量矩阵与向量的创建与索引创建矩阵要在numpy中构造矩阵，我们在列表中列出矩阵的行，并将该列表传递给numpy数组构造函数。 A = np.array([[1,-1,2],[3,2,0]])   1 -1 2    3 2 0   创建向量向量只是具有单列的数组。  v = np.array([[2],[1],[3]]) 更方便的方法是转置相应的行向量。">
-<meta property="og:locale" content="zh">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/Q9IrylQ.png">
 <meta property="og:image" content="https://i.imgur.com/SdiuSTB.png">
 <meta property="og:image" content="https://i.imgur.com/mmYEuuy.png">
@@ -114,7 +114,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -146,7 +146,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
 
 
@@ -199,7 +199,7 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-首页">
+        <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
@@ -209,7 +209,7 @@
         </li>
       
         
-        <li class="menu-item menu-item-关于">
+        <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
@@ -219,7 +219,7 @@
         </li>
       
         
-        <li class="menu-item menu-item-标签">
+        <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
@@ -229,7 +229,7 @@
         </li>
       
         
-        <li class="menu-item menu-item-分类">
+        <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
@@ -239,7 +239,7 @@
         </li>
       
         
-        <li class="menu-item menu-item-归档">
+        <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
@@ -308,9 +308,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T14:31:09+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T14:31:09+08:00">
                 2019-08-21
               </time>
             
@@ -329,7 +329,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1469,10 +1469,10 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -1492,10 +1492,10 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -1506,7 +1506,7 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -1522,7 +1522,7 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
             <h3 class="widget-title">Tag Cloud</h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习-监督学习/">机器学习 监督学习</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
             </div>
@@ -1663,9 +1663,6 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
 
 
 
-  
-  
-
 
 
 
@@ -1702,16 +1699,6 @@ op6=np.linalg.norm(a - b,ord=np.inf)</code></pre><h3 id="如何计算夹角余�
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
