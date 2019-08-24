@@ -33,6 +33,12 @@ const ap = new APlayer({
         artist: "买辣椒也用券",
         url: "https://link.hhtjim.com/163/1330348068.mp3",
         cover: "http://p2.music.126.net/Tggk3YY3rzD9R7pbcaFNqQ==/109951163425586926.jpg",
+      },
+      {
+      	name: "七月上",
+      	artist: "Jam",
+      	url: "http://ws.stream.qqmusic.qq.com/C400004P9zLK3JjSMX.m4a?guid=2578725368&vkey=84C2B69437D3A329639B0D42CD4575B9488F0198F764AA76AA2A244A84ADCB34F63EA65A0CE4C95821BFAD9CF2F4EFC4016A250F7B593026&uin=0&fromtag=66",
+      	cover: "https://y.gtimg.cn/music/photo_new/T001R300x300M0000023ni2j3F9CpN.jpg",
       }
     ]
 });
