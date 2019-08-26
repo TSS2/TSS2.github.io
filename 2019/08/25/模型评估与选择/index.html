@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型评估与选择">
+<meta property="og:url" content="#/2019/08/25/模型评估与选择/index.html">
+<meta property="og:site_name" content="童双双">
+<meta property="og:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-26T08:16:34.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模型评估与选择">
+<meta name="twitter:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="#/2019/08/25/模型评估与选择/">
+
+
+
+
+
+  <title>模型评估与选择 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/uploads/cat.jpg" alt="童双双">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">童双双</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">double</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="#/2019/08/25/模型评估与选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="童双双">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="童双双">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">模型评估与选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-25T16:47:25+08:00">
+                2019-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/25/模型评估与选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/25/模型评估与选择/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Estimator-score-method（估计器得分的方法）"><a href="#Estimator-score-method（估计器得分的方法）" class="headerlink" title="Estimator score method（估计器得分的方法）"></a>Estimator score method（估计器得分的方法）</h2><p>score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。</p>
+<p>使用estimator的score函数来评估模型的属性，默认情况下，<br>分类器对应于准确率：sklearn.metrics.accuracy_score，<br>回归器对应于均方差：sklearn.metrics.r2_score。</p>
+<h2 id="Scoring-parameter（评分参数）"><a href="#Scoring-parameter（评分参数）" class="headerlink" title="Scoring parameter（评分参数）"></a>Scoring parameter（评分参数）</h2><p>model_selection.GridSearchCV(scoring=None)</p>
+<p>model_selection.cross_val_score(scoring=None)</p>
+<p>指定在进行网格搜索或者计算交叉验证得分的时候，使用什么标准度量’estimator’的预测性能，默认是None，就是使用estimator自己的score方法来计算得分。我们可以指定别的性能度量标准，它必须是一个可调用对象，sklearn.metrics不仅为我们提供了一系列预定义的可调用对象，而且还支持自定义评估标准</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Scoring（得分）</th>
+<th>Function（函数）</th>
+<th>Comment（注解）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Classification（分类）</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>‘accuracy’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score" title="sklearn.metrics.accuracy_score" target="_blank" rel="noopener"><code>metrics.accuracy_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘average_precision’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score" title="sklearn.metrics.average_precision_score" target="_blank" rel="noopener"><code>metrics.average_precision_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘f1’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" target="_blank" rel="noopener"><code>metrics.f1_score</code></a></td>
+<td>for binary targets（用于二进制目标）</td>
+</tr>
+<tr>
+<td>‘f1_micro’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" target="_blank" rel="noopener"><code>metrics.f1_score</code></a></td>
+<td>micro-averaged（微平均）</td>
+</tr>
+<tr>
+<td>‘f1_macro’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" target="_blank" rel="noopener"><code>metrics.f1_score</code></a></td>
+<td>macro-averaged（宏平均）</td>
+</tr>
+<tr>
+<td>‘f1_weighted’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" target="_blank" rel="noopener"><code>metrics.f1_score</code></a></td>
+<td>weighted average（加权平均）</td>
+</tr>
+<tr>
+<td>‘f1_samples’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score" target="_blank" rel="noopener"><code>metrics.f1_score</code></a></td>
+<td>by multilabel sample（通过 multilabel 样本）</td>
+</tr>
+<tr>
+<td>‘neg_log_loss’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss" target="_blank" rel="noopener"><code>metrics.log_loss</code></a></td>
+<td>requires <code>predict_proba</code> support（需要 <code>predict_proba</code> 支持）</td>
+</tr>
+<tr>
+<td>‘precision’ etc.</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score" target="_blank" rel="noopener"><code>metrics.precision_score</code></a></td>
+<td>suffixes apply as with ‘f1’（后缀适用于 ‘f1’）</td>
+</tr>
+<tr>
+<td>‘recall’ etc.</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score" target="_blank" rel="noopener"><code>metrics.recall_score</code></a></td>
+<td>suffixes apply as with ‘f1’（后缀适用于 ‘f1’）</td>
+</tr>
+<tr>
+<td>‘roc_auc’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score" target="_blank" rel="noopener"><code>metrics.roc_auc_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Clustering（聚类）</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>‘adjusted_mutual_info_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score" title="sklearn.metrics.adjusted_mutual_info_score" target="_blank" rel="noopener"><code>metrics.adjusted_mutual_info_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘adjusted_rand_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score" title="sklearn.metrics.adjusted_rand_score" target="_blank" rel="noopener"><code>metrics.adjusted_rand_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘completeness_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score" target="_blank" rel="noopener"><code>metrics.completeness_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘fowlkes_mallows_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fowlkes_mallows_score.html#sklearn.metrics.fowlkes_mallows_score" title="sklearn.metrics.fowlkes_mallows_score" target="_blank" rel="noopener"><code>metrics.fowlkes_mallows_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘homogeneity_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score" title="sklearn.metrics.homogeneity_score" target="_blank" rel="noopener"><code>metrics.homogeneity_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘mutual_info_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score" title="sklearn.metrics.mutual_info_score" target="_blank" rel="noopener"><code>metrics.mutual_info_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘normalized_mutual_info_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized_mutual_info_score.html#sklearn.metrics.normalized_mutual_info_score" title="sklearn.metrics.normalized_mutual_info_score" target="_blank" rel="noopener"><code>metrics.normalized_mutual_info_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘v_measure_score’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score" target="_blank" rel="noopener"><code>metrics.v_measure_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Regression（回归）</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>‘explained_variance’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html#sklearn.metrics.explained_variance_score" title="sklearn.metrics.explained_variance_score" target="_blank" rel="noopener"><code>metrics.explained_variance_score</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘neg_mean_absolute_error’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html#sklearn.metrics.mean_absolute_error" title="sklearn.metrics.mean_absolute_error" target="_blank" rel="noopener"><code>metrics.mean_absolute_error</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘neg_mean_squared_error’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error" target="_blank" rel="noopener"><code>metrics.mean_squared_error</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘neg_mean_squared_log_error’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html#sklearn.metrics.mean_squared_log_error" title="sklearn.metrics.mean_squared_log_error" target="_blank" rel="noopener"><code>metrics.mean_squared_log_error</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘neg_median_absolute_error’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html#sklearn.metrics.median_absolute_error" title="sklearn.metrics.median_absolute_error" target="_blank" rel="noopener"><code>metrics.median_absolute_error</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>‘r2’</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" target="_blank" rel="noopener"><code>metrics.r2_score</code></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>约定： 返回值越大代表性能越好</p>
+<p>可以使用sklearn.metrics.SCORERS返回以上的评估函数。</p>
+<p>在交叉验证中使用自定义scoring参数</p>
+<h2 id="Metric-functions（指标函数）"><a href="#Metric-functions（指标函数）" class="headerlink" title="Metric functions（指标函数）"></a>Metric functions（指标函数）</h2><p>sklearn.metric提供了一些函数，用来计算真实值与预测值之间的预测误差：</p>
+<ol>
+<li>以_score结尾的函数，返回一个最大值，越高越好</li>
+<li>以_error结尾的函数，返回一个最小值，越小越好；如果使用make_scorer来创建scorer时，将greater_is_better设为False</li>
+</ol>
+<p>许多metrics并没有给出在scoring参数中可配置的字符名，因为有时你可能需要额外的参数，比如：fbeta_score。这种情况下，你需要生成一个合适的scorer对象。最简单的方法是调用make_scorer来生成scoring对象。该函数将metrics转换成在模型评估中可调用的对象。</p>
+<p>第一个典型的用例是，将一个库中已经存在的metrics函数进行包装，使用定制参数，比如对fbeta_score函数中的beta参数进行设置：</p>
+<pre><code>from sklearn.metrics import fbeta_score, make_scorer
+ftwo_scorer = make_scorer(fbeta_score, beta=2)
+from sklearn.grid_search import GridSearchCV
+from sklearn.svm import LinearSVC
+grid = GridSearchCV(LinearSVC(), param_grid={&#39;C&#39;: [1, 10]}, scoring=ftwo_scorer)
+</code></pre><p>第二个典型用例是，通过make_scorer构建一个完整的定制scorer函数，该函数可以带有多个参数：</p>
+<ol>
+<li>你可以使用python函数：下例中的my_custom_loss_func</li>
+<li>python函数是否返回一个score（greater_is_better=True），还是返回一个loss（greater_is_better=False）。如果为loss，python函数的输出将被scorer对象忽略，根据交叉验证的原则，得分越高模型越好。</li>
+<li>对于分类问题的metrics：如果你提供的python函数是否需要对连续值进行决策判断，可以将参数设置为（needs_threshold=True）。缺省值为False。</li>
+<li>一些额外的参数：比如f1_score中的bata或labels。</li>
+</ol>
+<p>下例使用定制的scorer，使用了greater_is_better参数：</p>
+<pre><code>import numpy as np
+def my_custom_loss_func(ground_truth, predictions):
+    diff = np.abs(ground_truth - predictions).max()
+    return np.log(1 + diff)
+
+loss  = make_scorer(my_custom_loss_func, greater_is_better=False)
+score = make_scorer(my_custom_loss_func, greater_is_better=True)
+ground_truth = [[1, 1]]
+predictions  = [0, 1]
+from sklearn.dummy import DummyClassifier
+clf = DummyClassifier(strategy=&#39;most_frequent&#39;, random_state=0)
+clf = clf.fit(ground_truth, predictions)
+loss(clf,ground_truth, predictions) 
+0.69...
+score(clf,ground_truth, predictions) 
+0.69...
+</code></pre><h1 id="准确率（acc）精准率（precision）-召回率（Recall）-F值"><a href="#准确率（acc）精准率（precision）-召回率（Recall）-F值" class="headerlink" title="准确率（acc）精准率（precision） 召回率（Recall） F值"></a>准确率（acc）精准率（precision） 召回率（Recall） F值</h1><script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline
+TP&FN \\\\
+\hline
+FP&TN \\\\
+\hline
+\end{array}</script><h2 id="准确率（acc）"><a href="#准确率（acc）" class="headerlink" title="准确率（acc）"></a>准确率（acc）</h2><p>由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。公式如下：</p>
+<script type="math/tex; mode=display">acc=\frac{TP+TN}{TP+FP+FN+TN}</script><p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
+<h2 id="精准率（precision）"><a href="#精准率（precision）" class="headerlink" title="精准率（precision）"></a>精准率（precision）</h2><p>它是针对预测结果而言的，它的含义是在所有被预测为正的样本中实际为正的样本的概率，意思就是在预测为正样本的结果中，我们有多少把握可以预测正确，其公式如下：</p>
+<script type="math/tex; mode=display">precision=\frac{TP}{TP+FP}</script><p>由于其针对预测结果而言，因此会导致原样本中的正例可能没有被预测出来。但是召回率可以做到。</p>
+<h2 id="召回率（Recall）"><a href="#召回率（Recall）" class="headerlink" title="召回率（Recall）"></a>召回率（Recall）</h2><p>它是针对原样本而言的，它的含义是在实际为正的样本中被预测为正样本的概率，其公式如下：</p>
+<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">F_{\beta}=\(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}</script><h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线的几点：</p>
+<p>横坐标：<script type="math/tex">\frac{FP}{FP+TN}</script><br>纵坐标：<script type="math/tex">\frac{TP}{TP+FN}</script></p>
+<script type="math/tex; mode=display">
+分类完全正确(0,1)=\begin{cases}
+\frac{TP}{TP+FN}=1\rightarrow{FN=0}\\\
+\frac{FP}{FP+TN}=0\rightarrow{FP=0}
+\end{cases}</script><script type="math/tex; mode=display">
+分类完全错误1,0)=\begin{cases}
+\frac{TP}{TP+FN}=0\rightarrow{TP=0}\\\
+\frac{FP}{FP+TN}=1\rightarrow{TN=1}
+\end{cases}</script><script type="math/tex; mode=display">
+可发现负例(0,0)=\begin{cases}
+\frac{TP}{TP+FN}=0\rightarrow{TP=0}\\\
+\frac{FP}{FP+TN}=0\rightarrow{FP=0}
+\end{cases}</script><script type="math/tex; mode=display">
+可发现正例(1,1)=\begin{cases}
+\frac{TP}{TP+FN}=1\rightarrow{FN=0}\\\
+\frac{FP}{FP+TN}=1\rightarrow{TN=0}
+\end{cases}</script><p>ROC曲线有个很好的特性：当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/22/svm/" rel="next" title="支持向量机">
+                <i class="fa fa-chevron-left"></i> 支持向量机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/cat.jpg" alt="童双双">
+            
+              <p class="site-author-name" itemprop="name">童双双</p>
+              <p class="site-description motion-element" itemprop="description">年华似水 匆匆一瞥 多少岁月 轻描淡写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+        
+
+
+
+            
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+            <h3 class="widget-title">Tag Cloud</h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+            </div>
+            
+
+
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/TSS2" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://sklearn.apachecn.org" target="_blank" title="sklearn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>sklearn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tensorflow.google.cn/" target="_blank" title="Tensorflow">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Tensorflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimator-score-method（估计器得分的方法）"><span class="nav-number">1.</span> <span class="nav-text">Estimator score method（估计器得分的方法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scoring-parameter（评分参数）"><span class="nav-number">2.</span> <span class="nav-text">Scoring parameter（评分参数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metric-functions（指标函数）"><span class="nav-number">3.</span> <span class="nav-text">Metric functions（指标函数）</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#准确率（acc）精准率（precision）-召回率（Recall）-F值"><span class="nav-number"></span> <span class="nav-text">准确率（acc）精准率（precision） 召回率（Recall） F值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准确率（acc）"><span class="nav-number">1.</span> <span class="nav-text">准确率（acc）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#精准率（precision）"><span class="nav-number">2.</span> <span class="nav-text">精准率（precision）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#召回率（Recall）"><span class="nav-number">3.</span> <span class="nav-text">召回率（Recall）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F值"><span class="nav-number">4.</span> <span class="nav-text">F值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROC曲线"><span class="nav-number">5.</span> <span class="nav-text">ROC曲线</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">童双双</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = '#/2019/08/25/模型评估与选择/';
+          this.page.identifier = '2019/08/25/模型评估与选择/';
+          this.page.title = '模型评估与选择';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

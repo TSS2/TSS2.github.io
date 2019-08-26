@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -133,7 +133,7 @@
 
 
 
-  <title>支持向量机 | 童双双</title>
+  <title>支持向量机 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -149,7 +149,7 @@
 
 
 
-  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/dist/music.js"></script>
@@ -391,7 +391,7 @@
 <h3 id="线性核VS径向基核"><a href="#线性核VS径向基核" class="headerlink" title="线性核VS径向基核"></a>线性核VS径向基核</h3><ol>
 <li>训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会慢】</li>
 <li>训练结果：线性核的得到的权重w可以反映出特征的重要性，从而进行特征选择；径向基核得到权重是无法解释的。</li>
-<li>适应的数据：线性核：样本数量远小于特征数量(n&lt;&lt;m）【此时不需要映射到高维】，或者样本数量与特征数量都很大。【此时主要考虑训练速度】径向基核：样本数量远大于特征数量(n&gt;&gt;m)。</li>
+<li>适应的数据：线性核：样本数量远小于特征数量(n&lt;<m）【此时不需要映射到高维】，或者样本数量与特征数量都很大。【此时主要考虑训练速度】径向基核：样本数量远大于特征数量(n>&gt;m)。</m）【此时不需要映射到高维】，或者样本数量与特征数量都很大。【此时主要考虑训练速度】径向基核：样本数量远大于特征数量(n></li>
 </ol>
 <h3 id="径向基核函数中参数的物理意义"><a href="#径向基核函数中参数的物理意义" class="headerlink" title="径向基核函数中参数的物理意义"></a>径向基核函数中参数的物理意义</h3><blockquote>
 <p>如果σ选得很大的话，高次特征上的权重实际上衰减得非常快【使用泰勒展开就可以发现，当很大的时候，泰勒展开的高次项的系数会变小得很快】，所以实际上（数值上近似一下）相当于一个低维的子空间；反过来，如果σ选得很小，则可以将任意的数据映射为线性可分——当然，这并不一定是好事，因为随之而来的可能是非常严重的过拟合问题【很难理解这里的说法？？？】【因为此时泰勒展开式中有效的项将变得非常多，甚至无穷多，那么就相当于映射到了一个无穷维的空间，任意数据都将变得线性可分】</p>
@@ -409,8 +409,6 @@
 </blockquote>
 <h3 id="样本失衡会对SVM的结果产生影响吗"><a href="#样本失衡会对SVM的结果产生影响吗" class="headerlink" title="样本失衡会对SVM的结果产生影响吗"></a>样本失衡会对SVM的结果产生影响吗</h3><blockquote>
 <p>会，超平面会靠近样本少的类别。因为使用的是软间隔分类，而如果对所有类别都是使用同样的惩罚系数，则由于优化目标里面有最小化惩罚量，所以靠近少数样本时，其惩罚量会少一些。</p>
-</blockquote>
-<blockquote>
 <p>比如：假设理想的分隔超平面是大样本中有很多数据到该超平面的函数距离是小于1的，<br>而小样本中是只有少数样本的函数距离小于1的。但是由于惩罚系数相同，实际算法得到的超平面会往小样本数据靠近。</p>
 </blockquote>
 <h3 id="样本失衡时，SVM可以采取什么样的方法解决"><a href="#样本失衡时，SVM可以采取什么样的方法解决" class="headerlink" title="样本失衡时，SVM可以采取什么样的方法解决"></a>样本失衡时，SVM可以采取什么样的方法解决</h3><ol>
@@ -422,17 +420,11 @@
 </blockquote>
 <h3 id="γ和C对RBF的影响"><a href="#γ和C对RBF的影响" class="headerlink" title="γ和C对RBF的影响"></a>γ和C对RBF的影响</h3><h4 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h4><blockquote>
 <p>增大γ使钟型曲线更窄，导致每个样本的影响范围变得更小：即判定边界最终变得更不规则，在单个样本周围环绕。相反的，较小的γ值使钟型曲线更宽，样本有更大的影响范围，判定边界最终则更加平滑。所以γ是可调整的超参数：如果你的模型过拟合，你应该减小γ值，若欠拟合，则增大γ（与超参数C相似）。 </p>
-</blockquote>
-<blockquote>
 <p>当γ比较大时，我们会有更多的支持向量，我们的模型会比较复杂，容易过拟合一些。如果γ比较小，模型会变得简单，支持向量的个数会少。</p>
 </blockquote>
 <h4 id="回归模型"><a href="#回归模型" class="headerlink" title="回归模型"></a>回归模型</h4><blockquote>
 <p>SVM回归模型的RBF核比分类模型要复杂一点，因为此时我们除了惩罚系数C和RBF核函数的系数γ之外，还多了一个损失距离度量ϵ。如果是nu-SVR的话，损失距离度量ϵ代替为分类错误率上限nu，由于损失距离度量ϵ和分类错误率上限nu起的作用等价，因此本文只讨论带距离度量ϵ的回归SVM。</p>
-</blockquote>
-<blockquote>
 <p>对于惩罚系数C和RBF核函数的系数γ，回归模型和分类模型的作用基本相同。对于损失距离度量ϵ，它决定了样本点到超平面的距离损失，当ϵ比较大时，损失|yi−w∙ϕ(xi)−b|−ϵ较小，更多的点在损失距离范围之内，而没有损失,模型较简单，而当ϵ比较小时，损失函数会较大，模型也会变得复杂。scikit-learn中默认值是0.1。</p>
-</blockquote>
-<blockquote>
 <p>如果把惩罚系数C，RBF核函数的系数γ和损失距离度量ϵ一起看，当C比较大， γ比较大，ϵ比较小时，我们会有更多的支持向量，我们的模型会比较复杂，容易过拟合一些。如果C比较小 ， γ比较小，ϵ比较大时，模型会变得简单，支持向量的个数会少。</p>
 </blockquote>
 
@@ -476,6 +468,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/25/模型评估与选择/" rel="prev" title="模型评估与选择">
+                模型评估与选择 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -564,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -592,7 +588,7 @@
             <h3 class="widget-title">Tag Cloud</h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
             </div>
@@ -817,7 +813,24 @@
         s.src = 'https://.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
   
@@ -866,6 +879,8 @@
   
 
   
+  
+
 
   
 

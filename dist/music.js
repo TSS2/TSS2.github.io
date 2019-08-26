@@ -21,6 +21,7 @@ const ap = new APlayer({
         artist: "黄磊",
         url: "https://link.hhtjim.com/xiami/4Zw035aea.mp3",
         cover: "https://pic.xiami.net/images/album/img84/384/324451391358721.jpg",
+        autoplay: true,
       },
       {
         name: "春泥",
