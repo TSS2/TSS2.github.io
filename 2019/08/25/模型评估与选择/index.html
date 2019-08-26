@@ -1013,7 +1013,7 @@ F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公
                document.getElementById("gitment-display-button").style.display = "none";
                document.getElementById("gitment-container").style.display = "block";
                var gitment = new Gitment({
-                   id: window.location.pathname, 
+                   id: document.location.href, 
                    owner: 'TSS2',
                    repo: 'issues',
                    oauth: {

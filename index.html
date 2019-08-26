@@ -1076,7 +1076,7 @@ A = np.array([[1,-1,2],[3,2,0]])
                document.getElementById("gitment-display-button").style.display = "none";
                document.getElementById("gitment-container").style.display = "block";
                var gitment = new Gitment({
-                   id: window.location.pathname, 
+                   id: document.location.href, 
                    owner: 'TSS2',
                    repo: 'issues',
                    oauth: {
