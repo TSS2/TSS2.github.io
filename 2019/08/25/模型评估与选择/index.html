@@ -14,8 +14,8 @@
 
 <script>
     (function () {
-        if ('123456') {
-            if (prompt('请输入文章密码') !== '123456') {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
                 alert('密码错误！');
                 if (history.length === 1) {
                     location.replace("http://localhost:4000/"); // 这里替换成你的首页
@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T22:23:49.273Z">
+<meta property="og:updated_time" content="2019-08-26T23:30:48.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模型评估与选择">
 <meta name="twitter:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
@@ -348,7 +348,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/08/25/模型评估与选择/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/25/模型评估与选择/" itemprop="commentCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/08/25/模型评估与选择/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -584,15 +584,10 @@ FP&TN \\\\
 <h2 id="精准率（precision）"><a href="#精准率（precision）" class="headerlink" title="精准率（precision）"></a>精准率（precision）</h2><p>它是针对预测结果而言的，它的含义是在所有被预测为正的样本中实际为正的样本的概率，意思就是在预测为正样本的结果中，我们有多少把握可以预测正确，其公式如下：</p>
 <script type="math/tex; mode=display">precision=\frac{TP}{TP+FP}</script><p>由于其针对预测结果而言，因此会导致原样本中的正例可能没有被预测出来。但是召回率可以做到。</p>
 <h2 id="召回率（Recall）"><a href="#召回率（Recall）" class="headerlink" title="召回率（Recall）"></a>召回率（Recall）</h2><p>它是针对原样本而言的，它的含义是在实际为正的样本中被预测为正样本的概率，其公式如下：</p>
-<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">
-F_{\beta}=(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}
-$$
-
-### F1分数
-如果想要找到查准率和查全率之间的一个平衡点，我们就需要一个新的指标：F1分数。F1分数同时考虑了查准率和查全率，让二者同时达到最高，取一个平衡。也就得到了P-R曲线。
-
-$$F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公式知，当且仅当precision等于recall时F1才能取得最大值，当PR曲线越接近(1,1)点时模型越好。</p>
-<h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线的几点：</p>
+<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F1分数"><a href="#F1分数" class="headerlink" title="F1分数"></a>F1分数</h2><p>如果想要找到查准率和查全率之间的一个平衡点，我们就需要一个新的指标：F1分数。F1分数同时考虑了查准率和查全率，让二者同时达到最高，取一个平衡。也就得到了P-R曲线。</p>
+<script type="math/tex; mode=display">
+F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公式知，当且仅当precision等于recall时F1才能取得最大值，当PR曲线越接近(1,1)点时模型越好。</p>
+<h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">F_{\beta}=(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}</script><h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线的几点：</p>
 <p>横坐标：<script type="math/tex">\frac{FP}{FP+TN}</script><br>纵坐标：<script type="math/tex">\frac{TP}{TP+FN}</script></p>
 <script type="math/tex; mode=display">
 分类完全正确(0,1)=\begin{cases}
@@ -680,11 +675,7 @@ $$F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由�
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
+      <div class="ds-thread" data-thread-key="2019/08/25/模型评估与选择/" data-title="模型评估与选择" data-url="#/2019/08/25/模型评估与选择/">
       </div>
     </div>
 
@@ -823,7 +814,7 @@ $$F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimator-score-method（估计器得分的方法）"><span class="nav-number">1.</span> <span class="nav-text">Estimator score method（估计器得分的方法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scoring-parameter（评分参数）"><span class="nav-number">2.</span> <span class="nav-text">Scoring parameter（评分参数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metric-functions（指标函数）"><span class="nav-number">3.</span> <span class="nav-text">Metric functions（指标函数）</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#准确率（acc）精准率（precision）-召回率（Recall）-F值"><span class="nav-number"></span> <span class="nav-text">准确率（acc）精准率（precision） 召回率（Recall） F值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准确率（acc）"><span class="nav-number">1.</span> <span class="nav-text">准确率（acc）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#精准率（precision）"><span class="nav-number">2.</span> <span class="nav-text">精准率（precision）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#召回率（Recall）"><span class="nav-number">3.</span> <span class="nav-text">召回率（Recall）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F值"><span class="nav-number">4.</span> <span class="nav-text">F值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROC曲线"><span class="nav-number">5.</span> <span class="nav-text">ROC曲线</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimator-score-method（估计器得分的方法）"><span class="nav-number">1.</span> <span class="nav-text">Estimator score method（估计器得分的方法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scoring-parameter（评分参数）"><span class="nav-number">2.</span> <span class="nav-text">Scoring parameter（评分参数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metric-functions（指标函数）"><span class="nav-number">3.</span> <span class="nav-text">Metric functions（指标函数）</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#准确率（acc）精准率（precision）-召回率（Recall）-F值"><span class="nav-number"></span> <span class="nav-text">准确率（acc）精准率（precision） 召回率（Recall） F值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准确率（acc）"><span class="nav-number">1.</span> <span class="nav-text">准确率（acc）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#精准率（precision）"><span class="nav-number">2.</span> <span class="nav-text">精准率（precision）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#召回率（Recall）"><span class="nav-number">3.</span> <span class="nav-text">召回率（Recall）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F1分数"><span class="nav-number">4.</span> <span class="nav-text">F1分数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F值"><span class="nav-number">5.</span> <span class="nav-text">F值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROC曲线"><span class="nav-number">6.</span> <span class="nav-text">ROC曲线</span></a></li></ol></li></div>
             
 
           </div>
@@ -973,44 +964,28 @@ $$F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由�
 
   
 
-
+  
+    
   
 
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = '#/2019/08/25/模型评估与选择/';
-          this.page.identifier = '2019/08/25/模型评估与选择/';
-          this.page.title = '模型评估与选择';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"double"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
 
@@ -1019,44 +994,36 @@ $$F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由�
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'TSS2',
-            repo: 'issues',
-            
-            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
-            
-                client_id: '624d201125f2580545ab'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: window.location.pathname, 
+                   owner: 'TSS2',
+                   repo: 'issues',
+                   oauth: {
+                       client_id: '624d201125f2580545ab',
+                       client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
 
 
 
