@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T16:21:55.949Z">
+<meta property="og:updated_time" content="2019-08-26T22:23:49.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模型评估与选择">
 <meta name="twitter:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
@@ -584,7 +584,9 @@ FP&TN \\\\
 <h2 id="精准率（precision）"><a href="#精准率（precision）" class="headerlink" title="精准率（precision）"></a>精准率（precision）</h2><p>它是针对预测结果而言的，它的含义是在所有被预测为正的样本中实际为正的样本的概率，意思就是在预测为正样本的结果中，我们有多少把握可以预测正确，其公式如下：</p>
 <script type="math/tex; mode=display">precision=\frac{TP}{TP+FP}</script><p>由于其针对预测结果而言，因此会导致原样本中的正例可能没有被预测出来。但是召回率可以做到。</p>
 <h2 id="召回率（Recall）"><a href="#召回率（Recall）" class="headerlink" title="召回率（Recall）"></a>召回率（Recall）</h2><p>它是针对原样本而言的，它的含义是在实际为正的样本中被预测为正样本的概率，其公式如下：</p>
-<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">F_{\beta}=(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}$$
+<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">
+F_{\beta}=(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}
+$$
 
 ### F1分数
 如果想要找到查准率和查全率之间的一个平衡点，我们就需要一个新的指标：F1分数。F1分数同时考虑了查准率和查全率，让二者同时达到最高，取一个平衡。也就得到了P-R曲线。
