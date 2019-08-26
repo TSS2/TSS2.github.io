@@ -12,7 +12,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
-
+<script>
+    (function () {
+        if ('123456') {
+            if (prompt('请输入文章密码') !== '123456') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://localhost:4000/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
 
   
   
@@ -94,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T08:16:34.362Z">
+<meta property="og:updated_time" content="2019-08-26T08:41:52.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模型评估与选择">
 <meta name="twitter:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
@@ -571,7 +584,7 @@ FP&TN \\\\
 <h2 id="精准率（precision）"><a href="#精准率（precision）" class="headerlink" title="精准率（precision）"></a>精准率（precision）</h2><p>它是针对预测结果而言的，它的含义是在所有被预测为正的样本中实际为正的样本的概率，意思就是在预测为正样本的结果中，我们有多少把握可以预测正确，其公式如下：</p>
 <script type="math/tex; mode=display">precision=\frac{TP}{TP+FP}</script><p>由于其针对预测结果而言，因此会导致原样本中的正例可能没有被预测出来。但是召回率可以做到。</p>
 <h2 id="召回率（Recall）"><a href="#召回率（Recall）" class="headerlink" title="召回率（Recall）"></a>召回率（Recall）</h2><p>它是针对原样本而言的，它的含义是在实际为正的样本中被预测为正样本的概率，其公式如下：</p>
-<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">F_{\beta}=\(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}</script><h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线的几点：</p>
+<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><h2 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h2><script type="math/tex; mode=display">F_{\beta}=(1+{\beta}^{2})\times\frac{{precision}\times{recall}}{{\beta}^2\times{precision}+recall}</script><h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线的几点：</p>
 <p>横坐标：<script type="math/tex">\frac{FP}{FP+TN}</script><br>纵坐标：<script type="math/tex">\frac{TP}{TP+FN}</script></p>
 <script type="math/tex; mode=display">
 分类完全正确(0,1)=\begin{cases}
@@ -763,7 +776,7 @@ FP&TN \\\\
                   <span class="links-of-author-item">
                     <a href="https://github.com/TSS2" target="_blank" title="GitHub">
                       
-                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1038,7 +1051,7 @@ FP&TN \\\\
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
