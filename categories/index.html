@@ -637,17 +637,17 @@
    
    
    
-   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
    
        <script type="text/javascript">
            function ShowGitment(){
                document.getElementById("gitment-display-button").style.display = "none";
                document.getElementById("gitment-container").style.display = "block";
                var gitment = new Gitment({
-                   id: document.location.href, 
+                   id: window.location.pathname, 
                    owner: 'TSS2',
-                   repo: 'issues',
+                   repo: 'TSS2.github.io',
                    oauth: {
                        client_id: '624d201125f2580545ab',
                        client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
