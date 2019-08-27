@@ -1002,7 +1002,7 @@ F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公
    
        <script type="text/javascript">
            var gitment = new Gitment({
-               id: window.location.pathname, 
+               id: decodeURI(window.location.pathname), 
                owner: 'TSS2',
                repo: 'TSS2.github.io',
                oauth: {
