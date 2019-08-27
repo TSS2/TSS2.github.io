@@ -338,9 +338,13 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="about/index.html" data-title="关于" data-url="#/about/index.html">
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
+
+
 
   
 
@@ -602,37 +606,25 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"double"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+
+
+
+	
+
+
+
+
+
   
 
 
 
 
 
-
-
-
+  
 
 
 
@@ -643,23 +635,19 @@
    
    
    
-   <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-<script src="https://billts.site/js/gitment.js"></script>
+ 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
    
        <script type="text/javascript">
-           function ShowGitment(){
-               document.getElementById("gitment-display-button").style.display = "none";
-               document.getElementById("gitment-container").style.display = "block";
-               var gitment = new Gitment({
-                   id: window.location.pathname, 
-                   owner: 'TSS2',
-                   repo: 'TSS2.github.io',
-                   oauth: {
-                       client_id: '624d201125f2580545ab',
-                       client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
-                   }});
-               gitment.render('gitment-container');
-           }
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'TSS2',
+               repo: 'TSS2.github.io',
+               oauth: {
+                   client_id: '624d201125f2580545ab',
+                   client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
+               }});
+           gitment.render('gitment-container');
        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});

@@ -14,8 +14,8 @@
 
 <script>
     (function () {
-        if ('') {
-            if (prompt('请输入文章密码') !== '') {
+        if ('1234') {
+            if (prompt('请输入文章密码') !== '1234') {
                 alert('密码错误！');
                 if (history.length === 1) {
                     location.replace("http://localhost:4000/"); // 这里替换成你的首页
@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T23:30:48.758Z">
+<meta property="og:updated_time" content="2019-08-27T01:47:59.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模型评估与选择">
 <meta name="twitter:description" content="Estimator score method（估计器得分的方法）score(self, X, y_true)函数会在内部调用predict函数获得预测响应y_predict，然后与传入的真是响应进行比较，计算得分。 使用estimator的score函数来评估模型的属性，默认情况下，分类器对应于准确率：sklearn.metrics.accuracy_score，回归器对应于均方差：sklearn">
@@ -348,7 +348,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/08/25/模型评估与选择/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/08/25/模型评估与选择/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/25/模型评估与选择/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -675,9 +675,13 @@ F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2019/08/25/模型评估与选择/" data-title="模型评估与选择" data-url="#/2019/08/25/模型评估与选择/">
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
+
+
 
   
 
@@ -964,37 +968,25 @@ F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"double"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+
+
+
+	
+
+
+
+
+
   
 
 
 
 
 
-
-
-
+  
 
 
 
@@ -1005,23 +997,19 @@ F1=\frac{{2}\times{precision}\times{recall}}{precision+recall}</script><p>由公
    
    
    
-   <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-<script src="https://billts.site/js/gitment.js"></script>
+ 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
    
        <script type="text/javascript">
-           function ShowGitment(){
-               document.getElementById("gitment-display-button").style.display = "none";
-               document.getElementById("gitment-container").style.display = "block";
-               var gitment = new Gitment({
-                   id: window.location.pathname, 
-                   owner: 'TSS2',
-                   repo: 'TSS2.github.io',
-                   oauth: {
-                       client_id: '624d201125f2580545ab',
-                       client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
-                   }});
-               gitment.render('gitment-container');
-           }
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'TSS2',
+               repo: 'TSS2.github.io',
+               oauth: {
+                   client_id: '624d201125f2580545ab',
+                   client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
+               }});
+           gitment.render('gitment-container');
        </script>
    
 
