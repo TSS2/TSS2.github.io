@@ -88,7 +88,7 @@
 
 
 
-  <meta name="keywords" content="Tensorflow2.0,深度学习,">
+  <meta name="keywords" content="机器学习,监督学习,">
 
 
 
@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="TensorFlow 2.0默认采用eager执行模式，而且重整了很多混乱的模块。毫无疑问，2.0版本将会逐渐替换1.0版本，所以很有必要趁早入手TensorFlow 2.0。这篇文章将简明扼要地介绍TensorFlow 2.0，以求快速入门。 Eager执行TensorFlow的Eager执行时一种命令式编程（imperative programming），这和原生Python是一致的，当你执行">
-<meta name="keywords" content="Tensorflow2.0,深度学习">
+<meta name="description" content="SVM适合处理什么样的数据 高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】  线性核VS径向基核 训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会慢】 训练结果：线性核的得到的权重w可以反映出特征的重要性，从而进行特征选择；径向基核得到权重是无法">
+<meta name="keywords" content="机器学习,监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tensorflow2.0教程">
-<meta property="og:url" content="#/2019/09/01/Tensorflow2.0入门教程/index.html">
+<meta property="og:title" content="支持向量机">
+<meta property="og:url" content="#/2019/12/30/svm/index.html">
 <meta property="og:site_name" content="童双双">
-<meta property="og:description" content="TensorFlow 2.0默认采用eager执行模式，而且重整了很多混乱的模块。毫无疑问，2.0版本将会逐渐替换1.0版本，所以很有必要趁早入手TensorFlow 2.0。这篇文章将简明扼要地介绍TensorFlow 2.0，以求快速入门。 Eager执行TensorFlow的Eager执行时一种命令式编程（imperative programming），这和原生Python是一致的，当你执行">
+<meta property="og:description" content="SVM适合处理什么样的数据 高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】  线性核VS径向基核 训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会慢】 训练结果：线性核的得到的权重w可以反映出特征的重要性，从而进行特征选择；径向基核得到权重是无法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-01T12:43:46.737Z">
+<meta property="og:updated_time" content="2019-12-31T05:59:18.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tensorflow2.0教程">
-<meta name="twitter:description" content="TensorFlow 2.0默认采用eager执行模式，而且重整了很多混乱的模块。毫无疑问，2.0版本将会逐渐替换1.0版本，所以很有必要趁早入手TensorFlow 2.0。这篇文章将简明扼要地介绍TensorFlow 2.0，以求快速入门。 Eager执行TensorFlow的Eager执行时一种命令式编程（imperative programming），这和原生Python是一致的，当你执行">
+<meta name="twitter:title" content="支持向量机">
+<meta name="twitter:description" content="SVM适合处理什么样的数据 高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】  线性核VS径向基核 训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会慢】 训练结果：线性核的得到的权重w可以反映出特征的重要性，从而进行特征选择；径向基核得到权重是无法">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="#/2019/09/01/Tensorflow2.0入门教程/">
+  <link rel="canonical" href="#/2019/12/30/svm/">
 
 
 
 
 
-  <title>Tensorflow2.0教程 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>支持向量机 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="#/2019/09/01/Tensorflow2.0入门教程/">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/30/svm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="童双双">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tensorflow2.0教程</h1>
+          <h1 class="post-title" itemprop="name headline">支持向量机</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-01T16:57:42+08:00">
-                2019-09-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T00:00:00+08:00">
+                2019-12-30
               </time>
             
 
@@ -339,6 +339,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/监督学习/" itemprop="url" rel="index">
+                    <span itemprop="name">监督学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -347,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/01/Tensorflow2.0入门教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/09/01/Tensorflow2.0入门教程/" itemprop="commentsCount"></span>
+                <a href="/2019/12/30/svm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/12/30/svm/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -381,171 +403,48 @@
       
 
       
-        <p>TensorFlow 2.0默认采用eager执行模式，而且重整了很多混乱的模块。毫无疑问，2.0版本将会逐渐替换1.0版本，所以很有必要趁早入手TensorFlow 2.0。这篇文章将简明扼要地介绍TensorFlow 2.0，以求快速入门。</p>
-<h2 id="Eager执行"><a href="#Eager执行" class="headerlink" title="Eager执行"></a>Eager执行</h2><p>TensorFlow的Eager执行时一种命令式编程（imperative programming），这和原生Python是一致的，当你执行某个操作时是立即返回结果的。而TensorFlow一直是采用Graph模式，即先构建一个计算图，然后需要开启Session，喂进实际的数据才真正执行得到结果。显然，eager执行更简洁，我们可以更容易debug自己的代码，这也是为什么PyTorch更简单好用的原因。一个简单的例子如下：</p>
-<pre><code>x = tf.ones((2, 2), dtype=tf.dtypes.float32)
-y = tf.constant([[1, 2],
-                 [3, 4]], dtype=tf.dtypes.float32)
-z = tf.matmul(x, y)
-print(z)
-# tf.Tensor(
-# [[4. 6.]
-#  [4. 6.]], shape=(2, 2), dtype=float32)
-
-print(z.numpy())
-# [[4. 6.]
-# [4. 6.]]
-</code></pre><p>可以看到在eager执行下，每个操作后的返回值是tf.Tensor，其包含具体值，不再像Graph模式下那样只是一个计算图节点的符号句柄。由于可以立即看到结果，这非常有助于程序debug。更进一步地，调用tf.Tensor.numpy()方法可以获得Tensor所对应的numpy数组。</p>
-<p>这种eager执行的另外一个好处是可以使用Python原生功能，比如下面的条件判断：</p>
-<pre><code>random_value = tf.random.uniform([], 0, 1)
-x = tf.reshape(tf.range(0, 4), [2, 2])
-print(random_value)
-if random_value.numpy() &gt; 0.5:
-    y = tf.matmul(x, x)
-else:
-    y = tf.add(x, x)
-</code></pre><p>这种动态控制流主要得益于eager执行得到Tensor可以取出numpy值，这避免了使用Graph模式下的tf.cond和tf.while等算子。</p>
-<p>另外一个重要的问题，在egaer模式下如何计算梯度。在Graph模式时，我们在构建模型前向图时，同时也会构建梯度图，这样实际喂数据执行时可以很方便计算梯度。但是eager执行是动态的，这就需要每一次执行都要记录这些操作以计算梯度，这是通过tf.GradientTape来追踪所执行的操作以计算梯度，下面是一个计算实例：</p>
-<pre><code>w = tf.Variable([[1.0]])
-with tf.GradientTape() as tape:
-  loss = w * w + 2. * w + 5.
-
-grad = tape.gradient(loss, w)
-print(grad)  # =&gt; tf.Tensor([[ 4.]], shape=(1, 1), dtype=float32)
-</code></pre><h2 id="tf-function"><a href="#tf-function" class="headerlink" title="@tf.function"></a>@tf.function</h2><h3 id="会话执行"><a href="#会话执行" class="headerlink" title="会话执行"></a>会话执行</h3><p>对tf1.X有经验的读者应该不会对让我们又爱又恨的计算图(tf.Graph)和执行会话(tf.Session)感到陌生, 一个常规的流程如下:</p>
-<ol>
-<li>初始化一个计算图并且将该计算图设置为当前scope下的默认计算图</li>
-<li>用TF API设计计算图(比如: y=tf.matmul(a, x) + b)</li>
-<li>提前界定好参数共享并划分相应的参数scope</li>
-<li>创建并配置好tf.Session</li>
-<li>将计算图传给tf.Session</li>
-<li>初始化参数</li>
-<li>用tf.Session.run来执行计算图的节点, 被执行的节点会反向追踪所有依赖的需要执行的节点并执行计算.</li>
-</ol>
-<p>以下是上述过程的一个代码例子:</p>
-<pre><code>g = tf.Graph() #初始化计算图
-with g.as_default(): # 设置为默认计算图
-    a = tf.constant([[10,10],[11.,1.]]) 
-    x = tf.constant([[1.,0.],[0.,1.]])
-    b = tf.Variable(12.)
-    y = tf.matmul(a, x) + b # 描述计算图
-    init_op = tf.global_variables_initializer() # 待执行节点
-
-with tf.Session() as sess: # 配置会话
-    sess.run(init_op) # 执行节点
-    print(sess.run(y)) # 输出结果
-</code></pre><p>在TF 2.0中, 由于默认为动态图, 计算会直接被执行, 也就是说, 我们不需要</p>
-<ul>
-<li>定义计算图</li>
-<li>会话执行</li>
-<li>参数初始化</li>
-<li>用scope定义参数分享</li>
-<li>用tf.control_dependencies来声明节点的非直接依赖</li>
-</ul>
-<p>我们可以像写普通python代码(or pytorch)一样, 写了就执行:</p>
-<pre><code>a = tf.constant([[10,10],[11.,1.]])
-x = tf.constant([[1.,0.],[0.,1.]])
-b = tf.Variable(12.)
-y = tf.matmul(a, x) + b
-print(y.numpy())
-</code></pre><p>一般来说, eager代码会比执行相同操作的静态图代码的效率低, 因为很多计算图优化的方法只能用在数据流图上.</p>
-<p>如果想在TF 2.0上构建传统的计算图, 我们就需要用到tf.function.</p>
-<h3 id="函数-而非会话"><a href="#函数-而非会话" class="headerlink" title="函数, 而非会话"></a>函数, 而非会话</h3><p>TF 2.0的其中一个重要改变就是去除tf.Session(此处应有掌声). 这个改变会迫使用户用更好的方式来组织代码: 不用再用让人纠结的tf.Session来执行代码, 就是一个个python函数, 加上一个简单的装饰器.</p>
-<p>在TF 2.0里面, 如果需要构建计算图, 我们只需要给python函数加上@tf.function的装饰器.</p>
-<p>这个自动将python代码转成图表示代码的工具就叫做AutoGraph.</p>
-<p>在TF 2.0中, 如果一个函数被@tf.function装饰了, 那么AutoGraph将会被自动调用, 从而将python函数转换成可执行的图表示.</p>
-<h3 id="tf-function-究竟发生了什么"><a href="#tf-function-究竟发生了什么" class="headerlink" title="tf.function: 究竟发生了什么?"></a>tf.function: 究竟发生了什么?</h3><p>在第一次调用被@tf.function装饰的函数时, 下列事情将会发生:</p>
-<ul>
-<li>该函数被执行并跟踪。和Tensorflow 1.x类似, Eager会在这个函数中被禁用，因此每个tf.API只会定义一个生成tf.Tensor输出的节点</li>
-<li>AutoGraph用于检测可以转换为等效图表示的Python操作（while→tf.while，for→tf.while，if→tf.cond，assert→tf.assert…)</li>
-<li>为了保留执行顺序，在每个语句之后自动添加tf.control_dependencies，以便在执行第i+1行时确保第i行已经被执行. 至此计算图已经确定</li>
-<li>根据函数名称和输入参数，创建唯一ID并将其与定义好的计算图相关联。计算图被缓存到一个映射表中：map [id] = graph</li>
-<li>如果ID配对上了，之后的函数调用都会直接使用该计算图</li>
-</ul>
-<h3 id="改写到eager-execution"><a href="#改写到eager-execution" class="headerlink" title="改写到eager execution"></a>改写到eager execution</h3><p>要使用tf.function, 第一步需要先将TF 1.X的设计计算图的代码放进python函数里面.</p>
-<pre><code>def f():
-    a = tf.constant([[10,10],[11.,1.]])
-    x = tf.constant([[1.,0.],[0.,1.]])
-    b = tf.Variable(12.)
-    y = tf.matmul(a, x) + b
-    return y
-</code></pre><p>应为TF 2.0默认是eager的, 我们可以直接执行该函数(不需要tf.Session):</p>
-<pre><code>print(f().numpy())
-</code></pre><p>我们就会得到输出:</p>
-<pre><code>[[22. 22.]
- [23. 13.]]
-</code></pre><h3 id="从eager到tf-function"><a href="#从eager到tf-function" class="headerlink" title="从eager到tf.function"></a>从eager到tf.function</h3><p>我们可以直接用@tf.function来装饰函数f, 我们在原来f的基础上加上宇宙第一的debug大法: print来更好地看看究竟发生了什么.</p>
-<pre><code>@tf.function
-def f():
-    a = tf.constant([[10,10],[11.,1.]])
-    x = tf.constant([[1.,0.],[0.,1.]])
-    b = tf.Variable(12.)
-    y = tf.matmul(a, x) + b
-    print(&quot;PRINT: &quot;, y)
-    tf.print(&quot;TF-PRINT: &quot;, y)
-    return y
-
-f()
-</code></pre><p>所以发生了什么呢?</p>
-<ul>
-<li>@tf.function将函数f包进了tensorflow.python.eager.def_function.Function这个对象, 函数f被赋予到了这个对象的.python_function属性.</li>
-<li><p>当f()被执行的时候, 计算图会同时被构建, 但是计算不会执行, 因此我们会得到以下结果, tf.的操作不会被执行:</p>
-<p>  PRINT: Tensor(“add:0”, shape=(2, 2), dtype=float32)</p>
-</li>
-<li><p>最终, 你会看到代码会执行失败:</p>
-<p>  ValueError: tf.function-decorated function tried to create variables on non-first call.</p>
-</li>
-</ul>
-<p>在 RFC: Functions, not Session里面有个非常明确的指示:</p>
-<blockquote>
-<p>State (like tf.Variable objects) are only created the first time the function f is called. 状态(比如tf.Variable) 只会在函数被第一次调用时创建.</p>
+        <h3 id="SVM适合处理什么样的数据"><a href="#SVM适合处理什么样的数据" class="headerlink" title="SVM适合处理什么样的数据"></a>SVM适合处理什么样的数据</h3><blockquote>
+<p>高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】</p>
 </blockquote>
-<p>但是 Alexandre Passos指出, 在函数转换成图表示时, 我们没有办法确定tf.function调用了多少次函数, 因此我们在第一次调用函数f时, 在图构建的过程中, 可能会被执行了多次, 这就导致了上述错误.</p>
-<p>造成这个错误的根源在于同样的命令在动态图和静态图中的不一致性. 在动态图中, tf.Variable时一个普通的python变量, 超出了其作用域范围就会被销毁. 而在静态图中, tf.Variable则是计算图中一个持续存在的节点, 不受python的作用域的影响. 因此, 这是使用tf.function的第一个教训:</p>
-<blockquote>
-<p>将一个在动态图中可行的函数转换成静态图需要用静态图的方式思考该函数是否可行</p>
-</blockquote>
-<p>那么我们可以怎样去规避这个错误呢?</p>
-<ol>
-<li>将tf.Variable作为函数的参数传入</li>
-<li>将父作用域继承tf.Variable</li>
-<li>将tf.Variable作为类属性来调用</li>
+<h3 id="线性核VS径向基核"><a href="#线性核VS径向基核" class="headerlink" title="线性核VS径向基核"></a>线性核VS径向基核</h3><ol>
+<li>训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会慢】</li>
+<li>训练结果：线性核的得到的权重w可以反映出特征的重要性，从而进行特征选择；径向基核得到权重是无法解释的。</li>
+<li>适应的数据：线性核：样本数量远小于特征数量(n&lt;<m）【此时不需要映射到高维】，或者样本数量与特征数量都很大。【此时主要考虑训练速度】径向基核：样本数量远大于特征数量(n>&gt;m)。</m）【此时不需要映射到高维】，或者样本数量与特征数量都很大。【此时主要考虑训练速度】径向基核：样本数量远大于特征数量(n></li>
 </ol>
-<h3 id="用改变变量作用域来处理"><a href="#用改变变量作用域来处理" class="headerlink" title="用改变变量作用域来处理"></a>用改变变量作用域来处理</h3><p>这里指方法2和方法3. 显然的, 我们推荐使用方法3:</p>
-<pre><code>class F():
-    def __init__(self):
-        self._b = None
-
-    @tf.function
-    def __call__(self):
-        a = tf.constant([[10, 10], [11., 1.]])
-        x = tf.constant([[1., 0.], [0., 1.]])
-        if self._b is None:
-            self._b = tf.Variable(12.)
-        y = tf.matmul(a, x) + self._b
-        print(&quot;PRINT: &quot;, y)
-        tf.print(&quot;TF-PRINT: &quot;, y)
-        return y
-
-f = F()
-f()
-</code></pre><h3 id="将状态作为传入参数来处理"><a href="#将状态作为传入参数来处理" class="headerlink" title="将状态作为传入参数来处理"></a>将状态作为传入参数来处理</h3><p>我们之后会看到, 我们并不能随意地用tf.function来转化eager的代码并达到加速的目的, 我们需要想象一下转化是怎么完成的, 在转python的代码到图操作的时候究竟发生了什么, 这些转化包含了什么黑魔法. 这里的例子比较简单, 我们会在接下来的文章中更深入的探讨.</p>
-<pre><code>@tf.function
-def f(b):
-    a = tf.constant([[10,10],[11.,1.]])
-    x = tf.constant([[1.,0.],[0.,1.]])
-    y = tf.matmul(a, x) + b
-    print(&quot;PRINT: &quot;, y)
-    tf.print(&quot;TF-PRINT: &quot;, y)
-    return y
-
-b = tf.Variable(12.)
-f(b)
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>我们可以用@tf.function装饰器来将python代码转成图表示代码</li>
-<li>我们不能在被装饰函数中初始化tf.Variable</li>
-<li>可以用变量作用域继承(对象属性)或者参数传入的方法使用在函数外初始化的变量</li>
-</ul>
+<h3 id="径向基核函数中参数的物理意义"><a href="#径向基核函数中参数的物理意义" class="headerlink" title="径向基核函数中参数的物理意义"></a>径向基核函数中参数的物理意义</h3><blockquote>
+<p>如果σ选得很大的话，高次特征上的权重实际上衰减得非常快【使用泰勒展开就可以发现，当很大的时候，泰勒展开的高次项的系数会变小得很快】，所以实际上（数值上近似一下）相当于一个低维的子空间；反过来，如果σ选得很小，则可以将任意的数据映射为线性可分——当然，这并不一定是好事，因为随之而来的可能是非常严重的过拟合问题【很难理解这里的说法？？？】【因为此时泰勒展开式中有效的项将变得非常多，甚至无穷多，那么就相当于映射到了一个无穷维的空间，任意数据都将变得线性可分】</p>
+</blockquote>
+<h3 id="多项式核VS径向基核"><a href="#多项式核VS径向基核" class="headerlink" title="多项式核VS径向基核"></a>多项式核VS径向基核</h3><ol>
+<li>计算量：径向基核需要计算e的幂，所以比较耗时</li>
+<li>可解释性：多项式核的结果更加直观，解释性强，所以如果对数据有一定的了解的话，可以考虑使用多项式核</li>
+<li>参数：多项式核参数多，难调</li>
+</ol>
+<h3 id="如何选择核函数"><a href="#如何选择核函数" class="headerlink" title="如何选择核函数"></a>如何选择核函数</h3><blockquote>
+<p>线性核是高斯核的特例，sigmoid核在给定的参数下和高斯核相似，多项式核的参数太多；对于高斯核0&lt;Kij&lt;1，而多项式核则可能会出现无穷大或无穷小；对于特征非常多的情况下，应使用线性核。因为此时特征够用了(很大可能是线性问题)，没必要映射到更高维的特征空间线性核的训练速度快，而且一般情况下效果还不错，尤其是维度高的情况下。其他核需要调参（使用交叉验证），所以速度慢。PS：高斯核必然映射到无穷维，因为核函数的泰勒展开有无穷多项。</p>
+</blockquote>
+<h3 id="为什么SVM训练的时候耗内存，而预测的时候占内存少"><a href="#为什么SVM训练的时候耗内存，而预测的时候占内存少" class="headerlink" title="为什么SVM训练的时候耗内存，而预测的时候占内存少"></a>为什么SVM训练的时候耗内存，而预测的时候占内存少</h3><blockquote>
+<p>因为SVM训练过程中需要存储核矩阵。而预测的时候只需要存储支持向量和相关参数。</p>
+</blockquote>
+<h3 id="样本失衡会对SVM的结果产生影响吗"><a href="#样本失衡会对SVM的结果产生影响吗" class="headerlink" title="样本失衡会对SVM的结果产生影响吗"></a>样本失衡会对SVM的结果产生影响吗</h3><blockquote>
+<p>会，超平面会靠近样本少的类别。因为使用的是软间隔分类，而如果对所有类别都是使用同样的惩罚系数，则由于优化目标里面有最小化惩罚量，所以靠近少数样本时，其惩罚量会少一些。</p>
+<p>比如：假设理想的分隔超平面是大样本中有很多数据到该超平面的函数距离是小于1的，<br>而小样本中是只有少数样本的函数距离小于1的。但是由于惩罚系数相同，实际算法得到的超平面会往小样本数据靠近。</p>
+</blockquote>
+<h3 id="样本失衡时，SVM可以采取什么样的方法解决"><a href="#样本失衡时，SVM可以采取什么样的方法解决" class="headerlink" title="样本失衡时，SVM可以采取什么样的方法解决"></a>样本失衡时，SVM可以采取什么样的方法解决</h3><ol>
+<li>采用既能代表多数类样本分布特征, 又能对分类界面有一定影响的样本特性欠抽样方法</li>
+<li>对多数类和和少数类采用不同的惩罚因子</li>
+</ol>
+<h3 id="样本没有规范化对SVM有什么影响"><a href="#样本没有规范化对SVM有什么影响" class="headerlink" title="样本没有规范化对SVM有什么影响"></a>样本没有规范化对SVM有什么影响</h3><blockquote>
+<p>对偶问题的优化目标函数中有向量的内积计算(优化过程中也会有内积计算的，见SMO)，径向基核函数中有向量的距离计算，存在值域小的变量会被忽略的问题，影响算法的精度。</p>
+</blockquote>
+<h3 id="γ和C对RBF的影响"><a href="#γ和C对RBF的影响" class="headerlink" title="γ和C对RBF的影响"></a>γ和C对RBF的影响</h3><h4 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h4><blockquote>
+<p>增大γ使钟型曲线更窄，导致每个样本的影响范围变得更小：即判定边界最终变得更不规则，在单个样本周围环绕。相反的，较小的γ值使钟型曲线更宽，样本有更大的影响范围，判定边界最终则更加平滑。所以γ是可调整的超参数：如果你的模型过拟合，你应该减小γ值，若欠拟合，则增大γ（与超参数C相似）。 </p>
+<p>当γ比较大时，我们会有更多的支持向量，我们的模型会比较复杂，容易过拟合一些。如果γ比较小，模型会变得简单，支持向量的个数会少。</p>
+</blockquote>
+<h4 id="回归模型"><a href="#回归模型" class="headerlink" title="回归模型"></a>回归模型</h4><blockquote>
+<p>SVM回归模型的RBF核比分类模型要复杂一点，因为此时我们除了惩罚系数C和RBF核函数的系数γ之外，还多了一个损失距离度量ϵ。如果是nu-SVR的话，损失距离度量ϵ代替为分类错误率上限nu，由于损失距离度量ϵ和分类错误率上限nu起的作用等价，因此本文只讨论带距离度量ϵ的回归SVM。</p>
+<p>对于惩罚系数C和RBF核函数的系数γ，回归模型和分类模型的作用基本相同。对于损失距离度量ϵ，它决定了样本点到超平面的距离损失，当ϵ比较大时，损失|yi−w∙ϕ(xi)−b|−ϵ较小，更多的点在损失距离范围之内，而没有损失,模型较简单，而当ϵ比较小时，损失函数会较大，模型也会变得复杂。scikit-learn中默认值是0.1。</p>
+<p>如果把惩罚系数C，RBF核函数的系数γ和损失距离度量ϵ一起看，当C比较大， γ比较大，ϵ比较小时，我们会有更多的支持向量，我们的模型会比较复杂，容易过拟合一些。如果C比较小 ， γ比较小，ϵ比较大时，模型会变得简单，支持向量的个数会少。</p>
+</blockquote>
 
       
     </div>
@@ -563,9 +462,9 @@ f(b)
       
         <div class="post-tags">
           
-            <a href="/tags/Tensorflow2-0/" rel="tag"># Tensorflow2.0</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/tags/监督学习/" rel="tag"># 监督学习</a>
           
         </div>
       
@@ -578,8 +477,8 @@ f(b)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/01/相似度计算/" rel="next" title="协同过滤">
-                <i class="fa fa-chevron-left"></i> 协同过滤
+              <a href="/2019/12/30/numpy知识点梳理/" rel="next" title="numpy知识点梳理">
+                <i class="fa fa-chevron-left"></i> numpy知识点梳理
               </a>
             
           </div>
@@ -588,8 +487,8 @@ f(b)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/02/推荐系统/" rel="prev" title="推荐系统">
-                推荐系统 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/30/Tensorflow2.0/" rel="prev" title="Tensorflow2.0-keras">
+                Tensorflow2.0-keras <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -764,7 +663,7 @@ f(b)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eager执行"><span class="nav-number">1.</span> <span class="nav-text">Eager执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-function"><span class="nav-number">2.</span> <span class="nav-text">@tf.function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#会话执行"><span class="nav-number">2.1.</span> <span class="nav-text">会话执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-而非会话"><span class="nav-number">2.2.</span> <span class="nav-text">函数, 而非会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-function-究竟发生了什么"><span class="nav-number">2.3.</span> <span class="nav-text">tf.function: 究竟发生了什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改写到eager-execution"><span class="nav-number">2.4.</span> <span class="nav-text">改写到eager execution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从eager到tf-function"><span class="nav-number">2.5.</span> <span class="nav-text">从eager到tf.function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用改变变量作用域来处理"><span class="nav-number">2.6.</span> <span class="nav-text">用改变变量作用域来处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将状态作为传入参数来处理"><span class="nav-number">2.7.</span> <span class="nav-text">将状态作为传入参数来处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.8.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SVM适合处理什么样的数据"><span class="nav-number">1.</span> <span class="nav-text">SVM适合处理什么样的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性核VS径向基核"><span class="nav-number">2.</span> <span class="nav-text">线性核VS径向基核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#径向基核函数中参数的物理意义"><span class="nav-number">3.</span> <span class="nav-text">径向基核函数中参数的物理意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式核VS径向基核"><span class="nav-number">4.</span> <span class="nav-text">多项式核VS径向基核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何选择核函数"><span class="nav-number">5.</span> <span class="nav-text">如何选择核函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么SVM训练的时候耗内存，而预测的时候占内存少"><span class="nav-number">6.</span> <span class="nav-text">为什么SVM训练的时候耗内存，而预测的时候占内存少</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样本失衡会对SVM的结果产生影响吗"><span class="nav-number">7.</span> <span class="nav-text">样本失衡会对SVM的结果产生影响吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样本失衡时，SVM可以采取什么样的方法解决"><span class="nav-number">8.</span> <span class="nav-text">样本失衡时，SVM可以采取什么样的方法解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样本没有规范化对SVM有什么影响"><span class="nav-number">9.</span> <span class="nav-text">样本没有规范化对SVM有什么影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#γ和C对RBF的影响"><span class="nav-number">10.</span> <span class="nav-text">γ和C对RBF的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类模型"><span class="nav-number">10.1.</span> <span class="nav-text">分类模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归模型"><span class="nav-number">10.2.</span> <span class="nav-text">回归模型</span></a></li></ol></li></ol></div>
             
 
           </div>

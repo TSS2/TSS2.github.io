@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="万物皆矩阵特征向量与特征值 A\nu = \lambda\nu A(\nu_1,\nu_2,...,\nu_n) =  (\nu_1,\nu_2,...,\nu_n) {\begin{pmatrix} \lambda_1 &amp; 0 &amp; ...&amp;0\\\\ 0 &amp; \lambda_2&amp;...&amp;0\\\\ ...&amp;...&amp;...&amp;0\\\\ ...&amp;...&amp;0&amp;\lambda_n \end{pmatri">
+<meta name="description" content="操作系统：Ubuntu 19,64位。（Server版） 所需软件： Java 8 +，Python 3.5 +, Scala 2.11.12+ 安装步骤: Step 1:Java8安装sudo apt-get update sudo apt-get install openjdk-8-jdk java -version Step 2: 如果Java安装完成后，我们安装Scalawget http">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性变换">
-<meta property="og:url" content="#/2019/09/22/线性变化/index.html">
+<meta property="og:title" content="PySpark搭建">
+<meta property="og:url" content="#/2019/12/30/PySpark搭建/index.html">
 <meta property="og:site_name" content="童双双">
-<meta property="og:description" content="万物皆矩阵特征向量与特征值 A\nu = \lambda\nu A(\nu_1,\nu_2,...,\nu_n) =  (\nu_1,\nu_2,...,\nu_n) {\begin{pmatrix} \lambda_1 &amp; 0 &amp; ...&amp;0\\\\ 0 &amp; \lambda_2&amp;...&amp;0\\\\ ...&amp;...&amp;...&amp;0\\\\ ...&amp;...&amp;0&amp;\lambda_n \end{pmatri">
+<meta property="og:description" content="操作系统：Ubuntu 19,64位。（Server版） 所需软件： Java 8 +，Python 3.5 +, Scala 2.11.12+ 安装步骤: Step 1:Java8安装sudo apt-get update sudo apt-get install openjdk-8-jdk java -version Step 2: 如果Java安装完成后，我们安装Scalawget http">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-31T05:22:36.697Z">
+<meta property="og:updated_time" content="2019-12-31T05:59:06.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性变换">
-<meta name="twitter:description" content="万物皆矩阵特征向量与特征值 A\nu = \lambda\nu A(\nu_1,\nu_2,...,\nu_n) =  (\nu_1,\nu_2,...,\nu_n) {\begin{pmatrix} \lambda_1 &amp; 0 &amp; ...&amp;0\\\\ 0 &amp; \lambda_2&amp;...&amp;0\\\\ ...&amp;...&amp;...&amp;0\\\\ ...&amp;...&amp;0&amp;\lambda_n \end{pmatri">
+<meta name="twitter:title" content="PySpark搭建">
+<meta name="twitter:description" content="操作系统：Ubuntu 19,64位。（Server版） 所需软件： Java 8 +，Python 3.5 +, Scala 2.11.12+ 安装步骤: Step 1:Java8安装sudo apt-get update sudo apt-get install openjdk-8-jdk java -version Step 2: 如果Java安装完成后，我们安装Scalawget http">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="#/2019/09/22/线性变化/">
+  <link rel="canonical" href="#/2019/12/30/PySpark搭建/">
 
 
 
 
 
-  <title>线性变换 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>PySpark搭建 | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="#/2019/09/22/线性变化/">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/30/PySpark搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="童双双">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线性变换</h1>
+          <h1 class="post-title" itemprop="name headline">PySpark搭建</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T08:10:53+08:00">
-                2019-09-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T00:00:00+08:00">
+                2019-12-30
               </time>
             
 
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/22/线性变化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/09/22/线性变化/" itemprop="commentsCount"></span>
+                <a href="/2019/12/30/PySpark搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/12/30/PySpark搭建/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -381,107 +381,33 @@
       
 
       
-        <h1 id="万物皆矩阵"><a href="#万物皆矩阵" class="headerlink" title="万物皆矩阵"></a><font color="red"><strong>万物皆矩阵</strong></font></h1><h1 id="特征向量与特征值"><a href="#特征向量与特征值" class="headerlink" title="特征向量与特征值"></a>特征向量与特征值</h1><script type="math/tex; mode=display">
-A\nu = \lambda\nu</script><script type="math/tex; mode=display">
-A(\nu_1,\nu_2,...,\nu_n) = 
-(\nu_1,\nu_2,...,\nu_n)
-{\begin{pmatrix}
-\lambda_1 & 0 & ...&0\\\\
-0 & \lambda_2&...&0\\\\
-...&...&...&0\\\\
-...&...&0&\lambda_n
-\end{pmatrix}}_{n \times n}</script><p>当$A$为对称阵时，A的特征向量两两正交且为单位向量。$\nu$越小，则$A$在特征空间的映射越小，换句话说，该维度的特征作用越小。<strong><font color="red">对称阵一定能相似对角化。</font></strong></p>
-<p>经过线性变换$A$，特征向量所在的空间并没有发生旋转，只是发生了伸缩变换，伸缩的因子便是特征值。</p>
-<p>特征值不相等，对应的特征向量线性无关。</p>
-<h2 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h2><p>对于对称阵A：$A=U \nu U^T$，完成了矩阵分解。利用$A$对一个向量$x$进行变换，$Ax=U \nu U^Tx$：</p>
-<script type="math/tex; mode=display">
-Ax = 
-\begin{bmatrix}
-x_1&x_2&...&x_m
-\end{bmatrix}
-
-{\begin{bmatrix}
-\lambda_1 & ... & ... \\\\ 
-... & \lambda_i & ... \\\\ 
-... & ... & \lambda_m
-\end{bmatrix}}
-
-\begin{bmatrix}
-x_1^T\\\\
-x_2^T\\\\
-...\\\\
-x_m^T
-\end{bmatrix}
-x</script><p>对等式右边做一些解释：</p>
-<p><strong>1.</strong> $U^T$的每一行对应一个单位正交向量，也可以说它的所有行构成了一组新的单位正交基。$U^Tx$的结果相当于$U^T$的每一行与$x$向量做内积，内积的几何意义在于一个向量$x$在另一向量$x_1^T$ 上的投影再乘以 $x_1^T$的模，对于单位向量$x_1^T$来说，这个模为1。所以， $U^Tx$的几何意义就是一个正交变换，将$x$向量映射到新的正交基上，其结果为新基上的坐标。这个过程可以看作是旋转。</p>
-<p><strong>2.</strong> 再看${\nu}U^Tx$ ， $\nu$是一个对角矩阵，对角矩阵的元素即为$A$的特征值。这个过程相当于对$U^Tx$的结果的每一维做了一个拉伸或收缩，且如果某一维度的特征值为0，则这一维度直接去除。</p>
-<p><strong>3.</strong> 最后看$U{\nu}U^Tx$ ，与1同理，同样是进行一个单位正交变换，由于$U$和$U^T$是互为逆矩阵，所以$U$变换是$U^T$变换的逆变换。</p>
-<p><strong>4.</strong> 特征分解的意义：</p>
-<pre><code>假设对称阵特征值全为1那么显然它就是单位阵，如果对称阵的特征值有个别是0其他全是1，那么它就是一个正交投影矩阵，它将m维向量投影到它的列空间中。
-</code></pre><h2 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h2><p>SVD分解的结果为：$A=U{\Sigma}V^T$</p>
-<p>其中$U=\begin{bmatrix}u_1&amp;u_2&amp;…&amp;u_n\end{bmatrix},V=\begin{bmatrix}v_1&amp;v_2&amp;…&amp;v_m\end{bmatrix},\Sigma=\begin{bmatrix}\lambda_1&amp;\lambda_2&amp;…&amp;\lambda_m\end{bmatrix},(m&lt;n)$</p>
-<p>令$B=AA^T,C = A^TA$，则有：</p>
-<script type="math/tex; mode=display">
-B=UDU^T = U\Sigma^T\Sigma U^T =(U\Sigma^TV^T)(V\Sigma U^T)</script><script type="math/tex; mode=display">
-C=VDV^T = V\Sigma^T\Sigma V^T =(V\Sigma^TU^T)(U\Sigma V^T)</script><script type="math/tex; mode=display">
-A = \begin{pmatrix}
-u_1&u_2&...&u_n
-\end{pmatrix}
-
-\begin{pmatrix}
-\lambda_1&...&...&0\\\\
-0&\lambda_2&...&0\\\\
-...&...&...&...\\\\
-...&...&...&\lambda_m\\\\
-...&...&...&0&
-\end{pmatrix}
-
-\begin{pmatrix}
-v_1^T\\\\
-v_2^T\\\\
-...\\\\
-v_m^T
-\end{pmatrix}</script><p>则<br>$A=\lambda_1 u_1 v_1^T +…+ \lambda_m u_m v_m^T<br>$</p>
-<p>与特征分解意义类似：<br>$A$是一个线性变换，把$A$分解成$U{\Sigma}V^T$，$\sum$给出了变换后椭圆长短轴的长度， $U$和$V^T$一起确定了变换后的方向，所以$U,\Sigma,V^T$ 包含了这个线性变换的全部信息。$\Sigma$矩阵的对角线元素称为$A$的奇异值，与特征值一样，大的奇异值对应长轴，小的奇异值对应短轴，大的奇异值包含更多信息。</p>
-<p>假设我们要对$A_{m\times n}$进行降维，那么通过奇异值分解 $A_{m\times n}=U_{m\times m}\Sigma_{m\times n}V_{n\times n}$，等式两边等价。由于 $\Sigma_{m\times n}$ 的对角线元素，也就是奇异值的分布是：几乎前10%甚至1%的奇异值的和占了全部奇异值只和的99%以上，也就是说，我们也可以用最大的k个的奇异值和对应的左右奇异向量U和V来近似描述矩阵，即：</p>
-<script type="math/tex; mode=display">
-A_{m\times n}=U_{m\times m}\Sigma_{m\times n}V_{n\times n}\approx U_{m\times k}\Sigma_{k\times k}V_{k\times n}</script><h2 id="旋转变换和反射变换（镜像）"><a href="#旋转变换和反射变换（镜像）" class="headerlink" title="旋转变换和反射变换（镜像）"></a>旋转变换和反射变换（镜像）</h2><p>在线性空间中进行旋转，实际是要改变向量的方向，但是不改变向量的长度和手性。现在假设矩阵$M_{n\times n}$是线性空间$R^n$中的一个旋转变换对应的矩阵，我们来看看它应该是什么样子。考虑向量内积$ab=|a||b|cos(a,b)$。因为旋转不改变向量的长度，且两个向量经过相同的旋转之后，其夹角保持不变。因此，若$M$对应一个旋转变换，那么就必须有</p>
-<script type="math/tex; mode=display">
-ab = MaMb,</script><p>也就是</p>
-<script type="math/tex; mode=display">
-ab^T = (Ma)(Mb)^T,</script><p>这也就是说$MM^T=I_n$，亦即$M$是正交矩阵。</p>
-<h2 id="缩放变换"><a href="#缩放变换" class="headerlink" title="缩放变换"></a>缩放变换</h2><p>在线性空间中进行缩放，实质就是要让线性空间中的每一维独立地进行变换，而不受其他维度影响。这样一来，很显然，对应的矩阵应该是对角矩阵。</p>
-<h2 id="SVD-分解的几何解释"><a href="#SVD-分解的几何解释" class="headerlink" title="SVD 分解的几何解释"></a>SVD 分解的几何解释</h2><p>现在回过头来看 SVD 分解</p>
-<script type="math/tex; mode=display">
-M = U\Sigma V^H</script><p>在实数范围内讨论，我们实质上是将一个复杂的变换$M:R^m \rightarrow R^n$分解成了三个变换：旋转/镜像$U:R^m \rightarrow R^m$，缩放$\Sigma:R^m \rightarrow R^n$，旋转/镜像$V:R^n \rightarrow R^n$</p>
-<p>不妨令$m=n$，不难发现$V^H$ 首先将（可能是退化的）单位球旋转（旋转标准正交基），而后经由 $\Sigma$将单位圆缩放拉伸成椭圆（超空间中的超椭球），再经由$U$将超椭球在 $K^m$空间中旋转。而这个超椭球的各个半轴的长度，就是矩阵$M$的奇异值，也就是矩阵 $\Sigma$对角线上的元素。</p>
-<h2 id="相似矩阵"><a href="#相似矩阵" class="headerlink" title="相似矩阵"></a>相似矩阵</h2><p>设$A,B$都是n阶矩阵，若有可逆矩阵$P$,使得$P^{-1}AP = B$则称$B$是$A$的相似矩阵或者矩阵$A,B$相似。</p>
-<p><strong>定理</strong>：若n阶矩阵$A,B$相似，则$A,B$的特征多项式相同，从而$A,B$的特征值相同。</p>
-<p><strong>推论</strong>：若n阶矩阵$A$与对角阵</p>
-<script type="math/tex; mode=display">
-\Sigma = 
-\begin{pmatrix}
-\lambda_1&...&...&...\\\\
-...&\lambda_2&...&...\\\\
-...&...&...&...\\\\
-...&...&...&\lambda_n
-\end{pmatrix}</script><p>相似，则$\lambda_1,…,\lambda_n$是$A$的特征值，$P$的列向量是$A$的特征向量。</p>
-<p>有$\Phi(A) = P\Phi(\Sigma)P^{-1}$。</p>
-<p><em>注：不是所有的方阵都可以相似对角化，因为不是所有的方阵的特征向量都线性无关。<font color="red">对称阵一定可以相似对角化</font>。</em></p>
-<h2 id="矩阵对角化"><a href="#矩阵对角化" class="headerlink" title="矩阵对角化"></a>矩阵对角化</h2><p><strong>n阶矩阵$M$相似于对角矩阵的充要条件是$M$有n个线性无关的特征向量。</strong></p>
-<p>矩阵$M$为$n\times n$矩阵，其特征值为$\lambda_1,\lambda_2,…,\lambda_n$，<font color="red"><strong>特征向量为$v_1,v_2,…,v_n$，形成线性无关集合</strong></font>，令$A=\begin{bmatrix}v_1&amp;v_2&amp;…&amp;v_n\end{bmatrix}$，则有</p>
-<script type="math/tex; mode=display">
-A^{-1}MA = 
-A^{-1}Adiag(\lambda_1,\lambda_2,...,\lambda_n)=
-\begin{pmatrix}
-\lambda_1&0&...&0\\\\
-0&\lambda_2&...&0\\\\
-...&...&...&...\\\\
-0&0&...&\lambda_n
-\end{pmatrix}</script><p><font color="yellow"><strong>对于对称阵而言，特征向量是正交的，则以单位特征向量构成的矩阵$A$是正交矩阵，因此$A^{-1}=A^T$。</strong></font>对称阵的特征向量组一定线性无关。</p>
-<h3 id="对称矩阵的对角化"><a href="#对称矩阵的对角化" class="headerlink" title="对称矩阵的对角化"></a>对称矩阵的对角化</h3><p><strong>定理：</strong> </p><p>设$\lambda_1,\lambda_2$是对称阵$A$的两个特征值，$P_1,P_2$是对应的特征向量。若$\lambda_1\neq\lambda_2$，则$P_1,P_2$正交。</p><p></p>
-<p><strong>定理：</strong> </p><p>设$A$为n阶对称阵，则必有正交阵$P$，使得$P^{-1}AP = P^TAP=\nu$，其中$\nu$是以$A$的n个特征值为对角元的对角阵。</p><p></p>
-
+        <p>操作系统：Ubuntu 19,64位。（Server版）</p>
+<p>所需软件： Java 8 +，Python 3.5 +, Scala 2.11.12+</p>
+<p>安装步骤:</p>
+<h4 id="Step-1-Java8安装"><a href="#Step-1-Java8安装" class="headerlink" title="Step 1:Java8安装"></a>Step 1:Java8安装</h4><pre><code>sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+java -version
+</code></pre><h4 id="Step-2-如果Java安装完成后，我们安装Scala"><a href="#Step-2-如果Java安装完成后，我们安装Scala" class="headerlink" title="Step 2: 如果Java安装完成后，我们安装Scala"></a>Step 2: 如果Java安装完成后，我们安装Scala</h4><pre><code>wget https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.deb
+sudo dpkg -i scala-2.12.8.deb
+scala -version
+</code></pre><h4 id="Step-3-安装-py4j"><a href="#Step-3-安装-py4j" class="headerlink" title="Step 3: 安装 py4j"></a>Step 3: 安装 py4j</h4><p>Py4J在驱动程序上用于Python和Java SparkContext对象之间的本地通信;大型数据传输是通过不同的机制执行的。</p>
+<pre><code>sudo pip install py4j
+</code></pre><h4 id="Step-4-安装-Spark"><a href="#Step-4-安装-Spark" class="headerlink" title="Step 4: 安装 Spark"></a>Step 4: 安装 Spark</h4><p>到目前为止，我们已经安装了安装Apache Spark所需的依赖项。接下来，我们需要下载并提取spark-2.4.0-bin-hadoop2.7.tgz 。</p>
+<pre><code>wget http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz 
+tar xvf  spark-2.4.0-bin-hadoop2.7.tgz
+</code></pre><p>在通过编辑bashrc文件将其添加到路径中:</p>
+<pre><code>vim ~/.bashrc
+</code></pre><p>在bashrc文件中添加环境变量（具体SPARK_HOME路径自己设定）</p>
+<pre><code>export SPARK_HOME=/home/ubuntu/spark-2.4.0-bin-hadoop2.7
+export PATH=${SPARK_HOME}/bin:$PATH
+</code></pre><p>最后激活环境变量</p>
+<pre><code>source ~/.bashrc
+</code></pre><h4 id="Step-5-到目前为止，我们的spark基本安装成功，下面我们来启动pyspark"><a href="#Step-5-到目前为止，我们的spark基本安装成功，下面我们来启动pyspark" class="headerlink" title="Step 5: 到目前为止，我们的spark基本安装成功，下面我们来启动pyspark"></a>Step 5: 到目前为止，我们的spark基本安装成功，下面我们来启动pyspark</h4><p>启动pyspark的命令如下：</p>
+<pre><code>pyspark
+</code></pre><p>退出命令如下：</p>
+<pre><code>exit()
+</code></pre><h4 id="Step-6-另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。"><a href="#Step-6-另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。" class="headerlink" title="Step 6: 另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。"></a>Step 6: 另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。</h4><pre><code>./bin/run-example SparkPi 10
+</code></pre>
       
     </div>
     
@@ -505,8 +431,8 @@ A^{-1}Adiag(\lambda_1,\lambda_2,...,\lambda_n)=
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/09/Tensorflow2.0/" rel="next" title="Tensorflow2.0-keras">
-                <i class="fa fa-chevron-left"></i> Tensorflow2.0-keras
+              <a href="/2019/12/30/Tensorflow2.0入门教程/" rel="next" title="Tensorflow2.0教程">
+                <i class="fa fa-chevron-left"></i> Tensorflow2.0教程
               </a>
             
           </div>
@@ -687,7 +613,7 @@ A^{-1}Adiag(\lambda_1,\lambda_2,...,\lambda_n)=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#万物皆矩阵"><span class="nav-number">1.</span> <span class="nav-text">万物皆矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征向量与特征值"><span class="nav-number">2.</span> <span class="nav-text">特征向量与特征值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA"><span class="nav-number">2.1.</span> <span class="nav-text">PCA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVD"><span class="nav-number">2.2.</span> <span class="nav-text">SVD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转变换和反射变换（镜像）"><span class="nav-number">2.3.</span> <span class="nav-text">旋转变换和反射变换（镜像）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩放变换"><span class="nav-number">2.4.</span> <span class="nav-text">缩放变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVD-分解的几何解释"><span class="nav-number">2.5.</span> <span class="nav-text">SVD 分解的几何解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相似矩阵"><span class="nav-number">2.6.</span> <span class="nav-text">相似矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵对角化"><span class="nav-number">2.7.</span> <span class="nav-text">矩阵对角化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对称矩阵的对角化"><span class="nav-number">2.7.1.</span> <span class="nav-text">对称矩阵的对角化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Java8安装"><span class="nav-number">1.</span> <span class="nav-text">Step 1:Java8安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-如果Java安装完成后，我们安装Scala"><span class="nav-number">2.</span> <span class="nav-text">Step 2: 如果Java安装完成后，我们安装Scala</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-安装-py4j"><span class="nav-number">3.</span> <span class="nav-text">Step 3: 安装 py4j</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-安装-Spark"><span class="nav-number">4.</span> <span class="nav-text">Step 4: 安装 Spark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-5-到目前为止，我们的spark基本安装成功，下面我们来启动pyspark"><span class="nav-number">5.</span> <span class="nav-text">Step 5: 到目前为止，我们的spark基本安装成功，下面我们来启动pyspark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-6-另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。"><span class="nav-number">6.</span> <span class="nav-text">Step 6: 另外，安装完成后，我们可以通过输入来检查Spark是否正常运行。</span></a></li></ol></div>
             
 
           </div>
@@ -926,26 +852,6 @@ A^{-1}Adiag(\lambda_1,\lambda_2,...,\lambda_n)=
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
