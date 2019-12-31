@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://localhost:4000/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ImageDataGenerator12345678910111213141516171819keras.preprocessing.image.ImageDataGenerator(featurewise_center=False,    samplewise_center=False,    featurewise_std_normalization=False,    samplewise_">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="童双双">
+<meta property="og:url" content="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/image/index.html">
+<meta property="og:site_name" content="童双双">
+<meta property="og:description" content="ImageDataGenerator12345678910111213141516171819keras.preprocessing.image.ImageDataGenerator(featurewise_center=False,    samplewise_center=False,    featurewise_std_normalization=False,    samplewise_">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-28T17:16:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="童双双">
+<meta name="twitter:description" content="ImageDataGenerator12345678910111213141516171819keras.preprocessing.image.ImageDataGenerator(featurewise_center=False,    samplewise_center=False,    featurewise_std_normalization=False,    samplewise_">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/image/">
+
+
+
+
+
+  <title> | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/uploads/cat.jpg" alt="童双双">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">童双双</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">double</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/image/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="童双双">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="童双双">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T21:12:51+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/image/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/image/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ImageDataGenerator"><a href="#ImageDataGenerator" class="headerlink" title="ImageDataGenerator"></a>ImageDataGenerator</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">keras.preprocessing.image.ImageDataGenerator(featurewise_center=<span class="literal">False</span>,</span><br><span class="line">    samplewise_center=<span class="literal">False</span>,</span><br><span class="line">    featurewise_std_normalization=<span class="literal">False</span>,</span><br><span class="line">    samplewise_std_normalization=<span class="literal">False</span>,</span><br><span class="line">    zca_whitening=<span class="literal">False</span>,</span><br><span class="line">    zca_epsilon=<span class="number">1e-6</span>,</span><br><span class="line">    rotation_range=<span class="number">0.</span>,</span><br><span class="line">    width_shift_range=<span class="number">0.</span>,</span><br><span class="line">    height_shift_range=<span class="number">0.</span>,</span><br><span class="line">    shear_range=<span class="number">0.</span>,</span><br><span class="line">    zoom_range=<span class="number">0.</span>,</span><br><span class="line">    channel_shift_range=<span class="number">0.</span>,</span><br><span class="line">    fill_mode=<span class="string">'nearest'</span>,</span><br><span class="line">    cval=<span class="number">0.</span>,</span><br><span class="line">    horizontal_flip=<span class="literal">False</span>,</span><br><span class="line">    vertical_flip=<span class="literal">False</span>,</span><br><span class="line">    rescale=<span class="literal">None</span>,</span><br><span class="line">    preprocessing_function=<span class="literal">None</span>,</span><br><span class="line">    data_format=K.image_data_format())</span><br></pre></td></tr></table></figure>
+<p>Generate batches of tensor image data with real-time data augmentation. The data will be looped over (in batches) indefinitely.</p>
+<ul>
+<li><p><strong>Arguments</strong>:</p>
+<ul>
+<li><strong>featurewise_center</strong>: Boolean. Set input mean to 0 over the dataset, feature-wise.</li>
+<li><strong>samplewise_center</strong>: Boolean. Set each sample mean to 0.</li>
+<li><strong>featurewise_std_normalization</strong>: Boolean. Divide inputs by std of the dataset, feature-wise.</li>
+<li><strong>samplewise_std_normalization</strong>: Boolean. Divide each input by its std.</li>
+<li><strong>zca_epsilon</strong>: epsilon for ZCA whitening. Default is 1e-6.</li>
+<li><strong>zca_whitening</strong>: Boolean. Apply ZCA whitening.</li>
+<li><strong>rotation_range</strong>: Int. Degree range for random rotations.</li>
+<li><strong>width_shift_range</strong>: Float (fraction of total width). Range for random horizontal shifts.</li>
+<li><strong>height_shift_range</strong>: Float (fraction of total height). Range for random vertical shifts.</li>
+<li><strong>shear_range</strong>: Float. Shear Intensity (Shear angle in counter-clockwise direction as radians)</li>
+<li><strong>zoom_range</strong>: Float or [lower, upper]. Range for random zoom. If a float, <code>[lower, upper] = [1-zoom_range, 1+zoom_range]</code>.</li>
+<li><strong>channel_shift_range</strong>: Float. Range for random channel shifts.</li>
+<li><strong>fill_mode</strong>: One of {“constant”, “nearest”, “reflect” or “wrap”}.  Points outside the boundaries of the input are filled according to the given mode.</li>
+<li><strong>cval</strong>: Float or Int. Value used for points outside the boundaries when <code>fill_mode = &quot;constant&quot;</code>.</li>
+<li><strong>horizontal_flip</strong>: Boolean. Randomly flip inputs horizontally.</li>
+<li><strong>vertical_flip</strong>: Boolean. Randomly flip inputs vertically.</li>
+<li><strong>rescale</strong>: rescaling factor. Defaults to None. If None or 0, no rescaling is applied,<pre><code>  otherwise we multiply the data by the value provided (before applying
+  any other transformation).
+</code></pre></li>
+<li><strong>preprocessing_function</strong>: function that will be implied on each input.<pre><code>  The function will run before any other modification on it.
+  The function should take one argument:
+  one image (Numpy tensor with rank 3),
+  and should output a Numpy tensor with the same shape.
+</code></pre></li>
+<li>_data_format_: One of {“channels_first”, “channels_last”}.<br>  “channels_last” mode means that the images should have shape <code>(samples, height, width, channels)</code>,<br>  “channels_first” mode means that the images should have shape <code>(samples, channels, height, width)</code>.<br>  It defaults to the <code>image_data_format</code> value found in your<br>  Keras config file at <code>~/.keras/keras.json</code>.<br>  If you never set it, then it will be “channels_last”.</li>
+</ul>
+</li>
+<li><p><strong>Methods</strong>:</p>
+<ul>
+<li><strong>fit(x)</strong>: Compute the internal data stats related to the data-dependent transformations, based on an array of sample data.<br>  Only required if featurewise_center or featurewise_std_normalization or zca_whitening.<ul>
+<li><strong>Arguments</strong>:<ul>
+<li><strong>x</strong>: sample data. Should have rank 4.<br>  In case of grayscale data,<br>  the channels axis should have value 1, and in case<br>  of RGB data, it should have value 3.</li>
+<li><strong>augment</strong>: Boolean (default: False). Whether to fit on randomly augmented samples.</li>
+<li><strong>rounds</strong>: int (default: 1). If augment, how many augmentation passes over the data to use.</li>
+<li><strong>seed</strong>: int (default: None). Random seed.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>flow(x, y)</strong>: Takes numpy data &amp; label arrays, and generates batches of augmented/normalized data. Yields batches indefinitely, in an infinite loop.<ul>
+<li><strong>Arguments</strong>:<ul>
+<li><strong>x</strong>: data. Should have rank 4.<br>  In case of grayscale data,<br>  the channels axis should have value 1, and in case<br>  of RGB data, it should have value 3.</li>
+<li><strong>y</strong>: labels.</li>
+<li><strong>batch_size</strong>: int (default: 32).</li>
+<li><strong>shuffle</strong>: boolean (default: True).</li>
+<li><strong>seed</strong>: int (default: None).</li>
+<li><strong>save_to_dir</strong>: None or str (default: None). This allows you to optimally specify a directory to which to save the augmented pictures being generated (useful for visualizing what you are doing).</li>
+<li><strong>save_prefix</strong>: str (default: <code>&#39;&#39;</code>). Prefix to use for filenames of saved pictures (only relevant if <code>save_to_dir</code> is set).</li>
+<li><strong>save_format</strong>: one of “png”, “jpeg” (only relevant if <code>save_to_dir</code> is set). Default: “png”.</li>
+</ul>
+</li>
+<li><strong>yields</strong>: Tuples of <code>(x, y)</code> where <code>x</code> is a numpy array of image data and <code>y</code> is a numpy array of corresponding labels.<br>  The generator loops indefinitely.</li>
+</ul>
+</li>
+<li><strong>flow_from_directory(directory)</strong>: Takes the path to a directory, and generates batches of augmented/normalized data. Yields batches indefinitely, in an infinite loop.<ul>
+<li><strong>Arguments</strong>:<ul>
+<li><strong>directory</strong>: path to the target directory. It should contain one subdirectory per class.<br>  Any PNG, JPG or BMP images inside each of the subdirectories directory tree will be included in the generator.<br>  See <a href="https://gist.github.com/fchollet/0830affa1f7f19fd47b06d4cf89ed44d" target="_blank" rel="noopener">this script</a> for more details.</li>
+<li><strong>target_size</strong>: tuple of integers <code>(height, width)</code>, default: <code>(256, 256)</code>.<br>  The dimensions to which all images found will be resized.</li>
+<li><strong>color_mode</strong>: one of “grayscale”, “rbg”. Default: “rgb”. Whether the images will be converted to have 1 or 3 color channels.</li>
+<li><strong>classes</strong>: optional list of class subdirectories (e.g. <code>[&#39;dogs&#39;, &#39;cats&#39;]</code>). Default: None. If not provided, the list of classes will be automatically inferred from the subdirectory names/structure under <code>directory</code>, where each subdirectory will be treated as a different class (and the order of the classes, which will map to the label indices, will be alphanumeric). The dictionary containing the mapping from class names to class indices can be obtained via the attribute <code>class_indices</code>.</li>
+<li><strong>class_mode</strong>: one of “categorical”, “binary”, “sparse” or None. Default: “categorical”. Determines the type of label arrays that are returned: “categorical” will be 2D one-hot encoded labels, “binary” will be 1D binary labels, “sparse” will be 1D integer labels. If None, no labels are returned (the generator will only yield batches of image data, which is useful to use <code>model.predict_generator()</code>, <code>model.evaluate_generator()</code>, etc.). Please note that in case of class_mode None, the data still needs to reside in a subdirectory of <code>directory</code> for it to work correctly.</li>
+<li><strong>batch_size</strong>: size of the batches of data (default: 32).</li>
+<li><strong>shuffle</strong>: whether to shuffle the data (default: True)</li>
+<li><strong>seed</strong>: optional random seed for shuffling and transformations.</li>
+<li><strong>save_to_dir</strong>: None or str (default: None). This allows you to optimally specify a directory to which to save the augmented pictures being generated (useful for visualizing what you are doing).</li>
+<li><strong>save_prefix</strong>: str. Prefix to use for filenames of saved pictures (only relevant if <code>save_to_dir</code> is set).</li>
+<li><strong>save_format</strong>: one of “png”, “jpeg” (only relevant if <code>save_to_dir</code> is set). Default: “png”.</li>
+<li><strong>follow_links</strong>: whether to follow symlinks inside class subdirectories (default: False).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Examples</strong>:</li>
+</ul>
+<p>Example of using <code>.flow(x, y)</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(x_train, y_train), (x_test, y_test) = cifar10.load_data()</span><br><span class="line">y_train = np_utils.to_categorical(y_train, num_classes)</span><br><span class="line">y_test = np_utils.to_categorical(y_test, num_classes)</span><br><span class="line"></span><br><span class="line">datagen = ImageDataGenerator(</span><br><span class="line">    featurewise_center=<span class="literal">True</span>,</span><br><span class="line">    featurewise_std_normalization=<span class="literal">True</span>,</span><br><span class="line">    rotation_range=<span class="number">20</span>,</span><br><span class="line">    width_shift_range=<span class="number">0.2</span>,</span><br><span class="line">    height_shift_range=<span class="number">0.2</span>,</span><br><span class="line">    horizontal_flip=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute quantities required for featurewise normalization</span></span><br><span class="line"><span class="comment"># (std, mean, and principal components if ZCA whitening is applied)</span></span><br><span class="line">datagen.fit(x_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># fits the model on batches with real-time data augmentation:</span></span><br><span class="line">model.fit_generator(datagen.flow(x_train, y_train, batch_size=<span class="number">32</span>),</span><br><span class="line">                    steps_per_epoch=len(x_train) / <span class="number">32</span>, epochs=epochs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># here's a more "manual" example</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(epochs):</span><br><span class="line">    print(<span class="string">'Epoch'</span>, e)</span><br><span class="line">    batches = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x_batch, y_batch <span class="keyword">in</span> datagen.flow(x_train, y_train, batch_size=<span class="number">32</span>):</span><br><span class="line">        model.fit(x_batch, y_batch)</span><br><span class="line">        batches += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> batches &gt;= len(x_train) / <span class="number">32</span>:</span><br><span class="line">            <span class="comment"># we need to break the loop by hand because</span></span><br><span class="line">            <span class="comment"># the generator loops indefinitely</span></span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>Example of using <code>.flow_from_directory(directory)</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">train_datagen = ImageDataGenerator(</span><br><span class="line">        rescale=<span class="number">1.</span>/<span class="number">255</span>,</span><br><span class="line">        shear_range=<span class="number">0.2</span>,</span><br><span class="line">        zoom_range=<span class="number">0.2</span>,</span><br><span class="line">        horizontal_flip=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">test_datagen = ImageDataGenerator(rescale=<span class="number">1.</span>/<span class="number">255</span>)</span><br><span class="line"></span><br><span class="line">train_generator = train_datagen.flow_from_directory(</span><br><span class="line">        <span class="string">'data/train'</span>,</span><br><span class="line">        target_size=(<span class="number">150</span>, <span class="number">150</span>),</span><br><span class="line">        batch_size=<span class="number">32</span>,</span><br><span class="line">        class_mode=<span class="string">'binary'</span>)</span><br><span class="line"></span><br><span class="line">validation_generator = test_datagen.flow_from_directory(</span><br><span class="line">        <span class="string">'data/validation'</span>,</span><br><span class="line">        target_size=(<span class="number">150</span>, <span class="number">150</span>),</span><br><span class="line">        batch_size=<span class="number">32</span>,</span><br><span class="line">        class_mode=<span class="string">'binary'</span>)</span><br><span class="line"></span><br><span class="line">model.fit_generator(</span><br><span class="line">        train_generator,</span><br><span class="line">        steps_per_epoch=<span class="number">2000</span>,</span><br><span class="line">        epochs=<span class="number">50</span>,</span><br><span class="line">        validation_data=validation_generator,</span><br><span class="line">        validation_steps=<span class="number">800</span>)</span><br></pre></td></tr></table></figure>
+<p>Example of transforming images and masks together.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># we create two instances with the same arguments</span></span><br><span class="line">data_gen_args = dict(featurewise_center=<span class="literal">True</span>,</span><br><span class="line">                     featurewise_std_normalization=<span class="literal">True</span>,</span><br><span class="line">                     rotation_range=<span class="number">90.</span>,</span><br><span class="line">                     width_shift_range=<span class="number">0.1</span>,</span><br><span class="line">                     height_shift_range=<span class="number">0.1</span>,</span><br><span class="line">                     zoom_range=<span class="number">0.2</span>)</span><br><span class="line">image_datagen = ImageDataGenerator(**data_gen_args)</span><br><span class="line">mask_datagen = ImageDataGenerator(**data_gen_args)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Provide the same seed and keyword arguments to the fit and flow methods</span></span><br><span class="line">seed = <span class="number">1</span></span><br><span class="line">image_datagen.fit(images, augment=<span class="literal">True</span>, seed=seed)</span><br><span class="line">mask_datagen.fit(masks, augment=<span class="literal">True</span>, seed=seed)</span><br><span class="line"></span><br><span class="line">image_generator = image_datagen.flow_from_directory(</span><br><span class="line">    <span class="string">'data/images'</span>,</span><br><span class="line">    class_mode=<span class="literal">None</span>,</span><br><span class="line">    seed=seed)</span><br><span class="line"></span><br><span class="line">mask_generator = mask_datagen.flow_from_directory(</span><br><span class="line">    <span class="string">'data/masks'</span>,</span><br><span class="line">    class_mode=<span class="literal">None</span>,</span><br><span class="line">    seed=seed)</span><br><span class="line"></span><br><span class="line"><span class="comment"># combine generators into one which yields image and masks</span></span><br><span class="line">train_generator = zip(image_generator, mask_generator)</span><br><span class="line"></span><br><span class="line">model.fit_generator(</span><br><span class="line">    train_generator,</span><br><span class="line">    steps_per_epoch=<span class="number">2000</span>,</span><br><span class="line">    epochs=<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/models/about-keras-models/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/preprocessing/text/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+
+
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/cat.jpg" alt="童双双">
+            
+              <p class="site-author-name" itemprop="name">童双双</p>
+              <p class="site-description motion-element" itemprop="description">年华似水 匆匆一瞥 多少岁月 轻描淡写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+        
+
+
+
+            
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+            <h3 class="widget-title">Tag Cloud</h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow2-0/">Tensorflow2.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keras/">keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协同过滤/">协同过滤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐算法/">推荐算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐系统/">推荐系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模型评估与选择/">模型评估与选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+            </div>
+            
+
+
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/TSS2" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://sklearn.apachecn.org" target="_blank" title="sklearn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>sklearn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tensorflow.google.cn/" target="_blank" title="Tensorflow">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Tensorflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ImageDataGenerator"><span class="nav-number">1.</span> <span class="nav-text">ImageDataGenerator</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">童双双</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+ 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: decodeURI(window.location.pathname), 
+               owner: 'TSS2',
+               repo: 'TSS2.github.io',
+               oauth: {
+                   client_id: '624d201125f2580545ab',
+                   client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

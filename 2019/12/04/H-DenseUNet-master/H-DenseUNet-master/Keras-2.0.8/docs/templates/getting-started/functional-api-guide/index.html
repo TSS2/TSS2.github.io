@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://localhost:4000/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Getting started with the Keras functional APIThe Keras functional API is the way to go for defining complex models, such as multi-output models, directed acyclic graphs, or models with shared layers.">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="童双双">
+<meta property="og:url" content="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/getting-started/functional-api-guide/index.html">
+<meta property="og:site_name" content="童双双">
+<meta property="og:description" content="Getting started with the Keras functional APIThe Keras functional API is the way to go for defining complex models, such as multi-output models, directed acyclic graphs, or models with shared layers.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s3.amazonaws.com/keras.io/img/multi-input-multi-output-graph.png">
+<meta property="og:updated_time" content="2019-06-28T17:16:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="童双双">
+<meta name="twitter:description" content="Getting started with the Keras functional APIThe Keras functional API is the way to go for defining complex models, such as multi-output models, directed acyclic graphs, or models with shared layers.">
+<meta name="twitter:image" content="https://s3.amazonaws.com/keras.io/img/multi-input-multi-output-graph.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/getting-started/functional-api-guide/">
+
+
+
+
+
+  <title> | 童双双</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/uploads/cat.jpg" alt="童双双">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">童双双</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">double</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/getting-started/functional-api-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="童双双">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="童双双">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T21:12:51+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/getting-started/functional-api-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/getting-started/functional-api-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Getting-started-with-the-Keras-functional-API"><a href="#Getting-started-with-the-Keras-functional-API" class="headerlink" title="Getting started with the Keras functional API"></a>Getting started with the Keras functional API</h1><p>The Keras functional API is the way to go for defining complex models, such as multi-output models, directed acyclic graphs, or models with shared layers.</p>
+<p>This guide assumes that you are already familiar with the <code>Sequential</code> model.</p>
+<p>Let’s start with something simple.</p>
+<hr>
+<h2 id="First-example-a-densely-connected-network"><a href="#First-example-a-densely-connected-network" class="headerlink" title="First example: a densely-connected network"></a>First example: a densely-connected network</h2><p>The <code>Sequential</code> model is probably a better choice to implement such a network, but it helps to start with something really simple.</p>
+<ul>
+<li>A layer instance is callable (on a tensor), and it returns a tensor</li>
+<li>Input tensor(s) and output tensor(s) can then be used to define a <code>Model</code></li>
+<li>Such a model can be trained just like Keras <code>Sequential</code> models.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"></span><br><span class="line"><span class="comment"># This returns a tensor</span></span><br><span class="line">inputs = Input(shape=(<span class="number">784</span>,))</span><br><span class="line"></span><br><span class="line"><span class="comment"># a layer instance is callable on a tensor, and returns a tensor</span></span><br><span class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(inputs)</span><br><span class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</span><br><span class="line">predictions = Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># This creates a model that includes</span></span><br><span class="line"><span class="comment"># the Input layer and three Dense layers</span></span><br><span class="line">model = Model(inputs=inputs, outputs=predictions)</span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line">              loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit(data, labels)  <span class="comment"># starts training</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="All-models-are-callable-just-like-layers"><a href="#All-models-are-callable-just-like-layers" class="headerlink" title="All models are callable, just like layers"></a>All models are callable, just like layers</h2><p>With the functional API, it is easy to re-use trained models: you can treat any model as if it were a layer, by calling it on a tensor. Note that by calling a model you aren’t just re-using the <em>architecture</em> of the model, you are also re-using its weights.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = Input(shape=(<span class="number">784</span>,))</span><br><span class="line"><span class="comment"># This works, and returns the 10-way softmax we defined above.</span></span><br><span class="line">y = model(x)</span><br></pre></td></tr></table></figure>
+<p>This can allow, for instance, to quickly create models that can process <em>sequences</em> of inputs. You could turn an image classification model into a video classification model, in just one line.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> TimeDistributed</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input tensor for sequences of 20 timesteps,</span></span><br><span class="line"><span class="comment"># each containing a 784-dimensional vector</span></span><br><span class="line">input_sequences = Input(shape=(<span class="number">20</span>, <span class="number">784</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># This applies our previous model to every timestep in the input sequences.</span></span><br><span class="line"><span class="comment"># the output of the previous model was a 10-way softmax,</span></span><br><span class="line"><span class="comment"># so the output of the layer below will be a sequence of 20 vectors of size 10.</span></span><br><span class="line">processed_sequences = TimeDistributed(model)(input_sequences)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Multi-input-and-multi-output-models"><a href="#Multi-input-and-multi-output-models" class="headerlink" title="Multi-input and multi-output models"></a>Multi-input and multi-output models</h2><p>Here’s a good use case for the functional API: models with multiple inputs and outputs. The functional API makes it easy to manipulate a large number of intertwined datastreams.</p>
+<p>Let’s consider the following model. We seek to predict how many retweets and likes a news headline will receive on Twitter. The main input to the model will be the headline itself, as a sequence of words, but to spice things up, our model will also have an auxiliary input, receiving extra data such as the time of day when the headline was posted, etc.<br>The model will also be supervised via two loss functions. Using the main loss function earlier in a model is a good regularization mechanism for deep models.</p>
+<p>Here’s what our model looks like:</p>
+<p><img src="https://s3.amazonaws.com/keras.io/img/multi-input-multi-output-graph.png" alt="multi-input-multi-output-graph" style="width: 400px;"></p>
+<p>Let’s implement it with the functional API.</p>
+<p>The main input will receive the headline, as a sequence of integers (each integer encodes a word).<br>The integers will be between 1 and 10,000 (a vocabulary of 10,000 words) and the sequences will be 100 words long.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Embedding, LSTM, Dense</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"></span><br><span class="line"><span class="comment"># Headline input: meant to receive sequences of 100 integers, between 1 and 10000.</span></span><br><span class="line"><span class="comment"># Note that we can name any layer by passing it a "name" argument.</span></span><br><span class="line">main_input = Input(shape=(<span class="number">100</span>,), dtype=<span class="string">'int32'</span>, name=<span class="string">'main_input'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># This embedding layer will encode the input sequence</span></span><br><span class="line"><span class="comment"># into a sequence of dense 512-dimensional vectors.</span></span><br><span class="line">x = Embedding(output_dim=<span class="number">512</span>, input_dim=<span class="number">10000</span>, input_length=<span class="number">100</span>)(main_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># A LSTM will transform the vector sequence into a single vector,</span></span><br><span class="line"><span class="comment"># containing information about the entire sequence</span></span><br><span class="line">lstm_out = LSTM(<span class="number">32</span>)(x)</span><br></pre></td></tr></table></figure>
+<p>Here we insert the auxiliary loss, allowing the LSTM and Embedding layer to be trained smoothly even though the main loss will be much higher in the model.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auxiliary_output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>, name=<span class="string">'aux_output'</span>)(lstm_out)</span><br></pre></td></tr></table></figure>
+<p>At this point, we feed into the model our auxiliary input data by concatenating it with the LSTM output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">auxiliary_input = Input(shape=(<span class="number">5</span>,), name=<span class="string">'aux_input'</span>)</span><br><span class="line">x = keras.layers.concatenate([lstm_out, auxiliary_input])</span><br><span class="line"></span><br><span class="line"><span class="comment"># We stack a deep densely-connected network on top</span></span><br><span class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</span><br><span class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</span><br><span class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># And finally we add the main logistic regression layer</span></span><br><span class="line">main_output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>, name=<span class="string">'main_output'</span>)(x)</span><br></pre></td></tr></table></figure>
+<p>This defines a model with two inputs and two outputs:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = Model(inputs=[main_input, auxiliary_input], outputs=[main_output, auxiliary_output])</span><br></pre></td></tr></table></figure>
+<p>We compile the model and assign a weight of 0.2 to the auxiliary loss.<br>To specify different <code>loss_weights</code> or <code>loss</code> for each different output, you can use a list or a dictionary.<br>Here we pass a single loss as the <code>loss</code> argument, so the same loss will be used on all outputs.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line">              loss_weights=[<span class="number">1.</span>, <span class="number">0.2</span>])</span><br></pre></td></tr></table></figure>
+<p>We can train the model by passing it lists of input arrays and target arrays:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.fit([headline_data, additional_data], [labels, labels],</span><br><span class="line">          epochs=<span class="number">50</span>, batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+<p>Since our inputs and outputs are named (we passed them a “name” argument),<br>We could also have compiled the model via:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line">              loss=&#123;<span class="string">'main_output'</span>: <span class="string">'binary_crossentropy'</span>, <span class="string">'aux_output'</span>: <span class="string">'binary_crossentropy'</span>&#125;,</span><br><span class="line">              loss_weights=&#123;<span class="string">'main_output'</span>: <span class="number">1.</span>, <span class="string">'aux_output'</span>: <span class="number">0.2</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># And trained it via:</span></span><br><span class="line">model.fit(&#123;<span class="string">'main_input'</span>: headline_data, <span class="string">'aux_input'</span>: additional_data&#125;,</span><br><span class="line">          &#123;<span class="string">'main_output'</span>: labels, <span class="string">'aux_output'</span>: labels&#125;,</span><br><span class="line">          epochs=<span class="number">50</span>, batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Shared-layers"><a href="#Shared-layers" class="headerlink" title="Shared layers"></a>Shared layers</h2><p>Another good use for the functional API are models that use shared layers. Let’s take a look at shared layers.</p>
+<p>Let’s consider a dataset of tweets. We want to build a model that can tell whether two tweets are from the same person or not (this can allow us to compare users by the similarity of their tweets, for instance).</p>
+<p>One way to achieve this is to build a model that encodes two tweets into two vectors, concatenates the vectors and then adds a logistic regression; this outputs a probability that the two tweets share the same author. The model would then be trained on positive tweet pairs and negative tweet pairs.</p>
+<p>Because the problem is symmetric, the mechanism that encodes the first tweet should be reused (weights and all) to encode the second tweet. Here we use a shared LSTM layer to encode the tweets.</p>
+<p>Let’s build this with the functional API. We will take as input for a tweet a binary matrix of shape <code>(140, 256)</code>, i.e. a sequence of 140 vectors of size 256, where each dimension in the 256-dimensional vector encodes the presence/absence of a character (out of an alphabet of 256 frequent characters).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, LSTM, Dense</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"></span><br><span class="line">tweet_a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</span><br><span class="line">tweet_b = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</span><br></pre></td></tr></table></figure>
+<p>To share a layer across different inputs, simply instantiate the layer once, then call it on as many inputs as you want:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This layer can take as input a matrix</span></span><br><span class="line"><span class="comment"># and will return a vector of size 64</span></span><br><span class="line">shared_lstm = LSTM(<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># When we reuse the same layer instance</span></span><br><span class="line"><span class="comment"># multiple times, the weights of the layer</span></span><br><span class="line"><span class="comment"># are also being reused</span></span><br><span class="line"><span class="comment"># (it is effectively *the same* layer)</span></span><br><span class="line">encoded_a = shared_lstm(tweet_a)</span><br><span class="line">encoded_b = shared_lstm(tweet_b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can then concatenate the two vectors:</span></span><br><span class="line">merged_vector = keras.layers.concatenate([encoded_a, encoded_b], axis=<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># And add a logistic regression on top</span></span><br><span class="line">predictions = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(merged_vector)</span><br><span class="line"></span><br><span class="line"><span class="comment"># We define a trainable model linking the</span></span><br><span class="line"><span class="comment"># tweet inputs to the predictions</span></span><br><span class="line">model = Model(inputs=[tweet_a, tweet_b], outputs=predictions)</span><br><span class="line"></span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line">              loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit([data_a, data_b], labels, epochs=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>Let’s pause to take a look at how to read the shared layer’s output or output shape.</p>
+<hr>
+<h2 id="The-concept-of-layer-“node”"><a href="#The-concept-of-layer-“node”" class="headerlink" title="The concept of layer “node”"></a>The concept of layer “node”</h2><p>Whenever you are calling a layer on some input, you are creating a new tensor (the output of the layer), and you are adding a “node” to the layer, linking the input tensor to the output tensor. When you are calling the same layer multiple times, that layer owns multiple nodes indexed as 0, 1, 2…</p>
+<p>In previous versions of Keras, you could obtain the output tensor of a layer instance via <code>layer.get_output()</code>, or its output shape via <code>layer.output_shape</code>. You still can (except <code>get_output()</code> has been replaced by the property <code>output</code>). But what if a layer is connected to multiple inputs?</p>
+<p>As long as a layer is only connected to one input, there is no confusion, and <code>.output</code> will return the one output of the layer:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</span><br><span class="line"></span><br><span class="line">lstm = LSTM(<span class="number">32</span>)</span><br><span class="line">encoded_a = lstm(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> lstm.output == encoded_a</span><br></pre></td></tr></table></figure>
+<p>Not so if the layer has multiple inputs:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</span><br><span class="line">b = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</span><br><span class="line"></span><br><span class="line">lstm = LSTM(<span class="number">32</span>)</span><br><span class="line">encoded_a = lstm(a)</span><br><span class="line">encoded_b = lstm(b)</span><br><span class="line"></span><br><span class="line">lstm.output</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; AttributeError: Layer lstm_1 has multiple inbound nodes,</span><br><span class="line">hence the notion of &quot;layer output&quot; is ill-defined.</span><br><span class="line">Use `get_output_at(node_index)` instead.</span><br></pre></td></tr></table></figure>
+<p>Okay then. The following works:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> lstm.get_output_at(<span class="number">0</span>) == encoded_a</span><br><span class="line"><span class="keyword">assert</span> lstm.get_output_at(<span class="number">1</span>) == encoded_b</span><br></pre></td></tr></table></figure>
+<p>Simple enough, right?</p>
+<p>The same is true for the properties <code>input_shape</code> and <code>output_shape</code>: as long as the layer has only one node, or as long as all nodes have the same input/output shape, then the notion of “layer output/input shape” is well defined, and that one shape will be returned by <code>layer.output_shape</code>/<code>layer.input_shape</code>. But if, for instance, you apply a same <code>Conv2D</code> layer to an input of shape <code>(32, 32, 3)</code>, and then to an input of shape <code>(64, 64, 3)</code>, the layer will have multiple input/output shapes, and you will have to fetch them by specifying the index of the node they belong to:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = Input(shape=(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>))</span><br><span class="line">b = Input(shape=(<span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">conv = Conv2D(<span class="number">16</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>)</span><br><span class="line">conved_a = conv(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Only one input so far, the following will work:</span></span><br><span class="line"><span class="keyword">assert</span> conv.input_shape == (<span class="literal">None</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">conved_b = conv(b)</span><br><span class="line"><span class="comment"># now the `.input_shape` property wouldn't work, but this does:</span></span><br><span class="line"><span class="keyword">assert</span> conv.get_input_shape_at(<span class="number">0</span>) == (<span class="literal">None</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">assert</span> conv.get_input_shape_at(<span class="number">1</span>) == (<span class="literal">None</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="More-examples"><a href="#More-examples" class="headerlink" title="More examples"></a>More examples</h2><p>Code examples are still the best way to get started, so here are a few more.</p>
+<h3 id="Inception-module"><a href="#Inception-module" class="headerlink" title="Inception module"></a>Inception module</h3><p>For more information about the Inception architecture, see <a href="http://arxiv.org/abs/1409.4842" target="_blank" rel="noopener">Going Deeper with Convolutions</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, MaxPooling2D, Input</span><br><span class="line"></span><br><span class="line">input_img = Input(shape=(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">tower_1 = Conv2D(<span class="number">64</span>, (<span class="number">1</span>, <span class="number">1</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>)(input_img)</span><br><span class="line">tower_1 = Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>)(tower_1)</span><br><span class="line"></span><br><span class="line">tower_2 = Conv2D(<span class="number">64</span>, (<span class="number">1</span>, <span class="number">1</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>)(input_img)</span><br><span class="line">tower_2 = Conv2D(<span class="number">64</span>, (<span class="number">5</span>, <span class="number">5</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>)(tower_2)</span><br><span class="line"></span><br><span class="line">tower_3 = MaxPooling2D((<span class="number">3</span>, <span class="number">3</span>), strides=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="string">'same'</span>)(input_img)</span><br><span class="line">tower_3 = Conv2D(<span class="number">64</span>, (<span class="number">1</span>, <span class="number">1</span>), padding=<span class="string">'same'</span>, activation=<span class="string">'relu'</span>)(tower_3)</span><br><span class="line"></span><br><span class="line">output = keras.layers.concatenate([tower_1, tower_2, tower_3], axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Residual-connection-on-a-convolution-layer"><a href="#Residual-connection-on-a-convolution-layer" class="headerlink" title="Residual connection on a convolution layer"></a>Residual connection on a convolution layer</h3><p>For more information about residual networks, see <a href="http://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">Deep Residual Learning for Image Recognition</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, Input</span><br><span class="line"></span><br><span class="line"><span class="comment"># input tensor for a 3-channel 256x256 image</span></span><br><span class="line">x = Input(shape=(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>))</span><br><span class="line"><span class="comment"># 3x3 conv with 3 output channels (same as input channels)</span></span><br><span class="line">y = Conv2D(<span class="number">3</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>)(x)</span><br><span class="line"><span class="comment"># this returns x + y.</span></span><br><span class="line">z = keras.layers.add([x, y])</span><br></pre></td></tr></table></figure>
+<h3 id="Shared-vision-model"><a href="#Shared-vision-model" class="headerlink" title="Shared vision model"></a>Shared vision model</h3><p>This model re-uses the same image-processing module on two inputs, to classify whether two MNIST digits are the same digit or different digits.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, MaxPooling2D, Input, Dense, Flatten</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"></span><br><span class="line"><span class="comment"># First, define the vision modules</span></span><br><span class="line">digit_input = Input(shape=(<span class="number">27</span>, <span class="number">27</span>, <span class="number">1</span>))</span><br><span class="line">x = Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>))(digit_input)</span><br><span class="line">x = Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>))(x)</span><br><span class="line">x = MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>))(x)</span><br><span class="line">out = Flatten()(x)</span><br><span class="line"></span><br><span class="line">vision_model = Model(digit_input, out)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Then define the tell-digits-apart model</span></span><br><span class="line">digit_a = Input(shape=(<span class="number">27</span>, <span class="number">27</span>, <span class="number">1</span>))</span><br><span class="line">digit_b = Input(shape=(<span class="number">27</span>, <span class="number">27</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># The vision model will be shared, weights and all</span></span><br><span class="line">out_a = vision_model(digit_a)</span><br><span class="line">out_b = vision_model(digit_b)</span><br><span class="line"></span><br><span class="line">concatenated = keras.layers.concatenate([out_a, out_b])</span><br><span class="line">out = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(concatenated)</span><br><span class="line"></span><br><span class="line">classification_model = Model([digit_a, digit_b], out)</span><br></pre></td></tr></table></figure>
+<h3 id="Visual-question-answering-model"><a href="#Visual-question-answering-model" class="headerlink" title="Visual question answering model"></a>Visual question answering model</h3><p>This model can select the correct one-word answer when asked a natural-language question about a picture.</p>
+<p>It works by encoding the question into a vector, encoding the image into a vector, concatenating the two, and training on top a logistic regression over some vocabulary of potential answers.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, MaxPooling2D, Flatten</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, LSTM, Embedding, Dense</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model, Sequential</span><br><span class="line"></span><br><span class="line"><span class="comment"># First, let's define a vision model using a Sequential model.</span></span><br><span class="line"><span class="comment"># This model will encode an image into a vector.</span></span><br><span class="line">vision_model = Sequential()</span><br><span class="line">vision_model.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'same'</span>, input_shape=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>))</span><br><span class="line">vision_model.add(MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">128</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'same'</span>))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">128</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>))</span><br><span class="line">vision_model.add(MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">256</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'same'</span>))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">256</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>))</span><br><span class="line">vision_model.add(Conv2D(<span class="number">256</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">'relu'</span>))</span><br><span class="line">vision_model.add(MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">vision_model.add(Flatten())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Now let's get a tensor with the output of our vision model:</span></span><br><span class="line">image_input = Input(shape=(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>))</span><br><span class="line">encoded_image = vision_model(image_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Next, let's define a language model to encode the question into a vector.</span></span><br><span class="line"><span class="comment"># Each question will be at most 100 word long,</span></span><br><span class="line"><span class="comment"># and we will index words as integers from 1 to 9999.</span></span><br><span class="line">question_input = Input(shape=(<span class="number">100</span>,), dtype=<span class="string">'int32'</span>)</span><br><span class="line">embedded_question = Embedding(input_dim=<span class="number">10000</span>, output_dim=<span class="number">256</span>, input_length=<span class="number">100</span>)(question_input)</span><br><span class="line">encoded_question = LSTM(<span class="number">256</span>)(embedded_question)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's concatenate the question vector and the image vector:</span></span><br><span class="line">merged = keras.layers.concatenate([encoded_question, encoded_image])</span><br><span class="line"></span><br><span class="line"><span class="comment"># And let's train a logistic regression over 1000 words on top:</span></span><br><span class="line">output = Dense(<span class="number">1000</span>, activation=<span class="string">'softmax'</span>)(merged)</span><br><span class="line"></span><br><span class="line"><span class="comment"># This is our final model:</span></span><br><span class="line">vqa_model = Model(inputs=[image_input, question_input], outputs=output)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The next stage would be training this model on actual data.</span></span><br></pre></td></tr></table></figure>
+<h3 id="Video-question-answering-model"><a href="#Video-question-answering-model" class="headerlink" title="Video question answering model"></a>Video question answering model</h3><p>Now that we have trained our image QA model, we can quickly turn it into a video QA model. With appropriate training, you will be able to show it a short video (e.g. 100-frame human action) and ask a natural language question about the video (e.g. “what sport is the boy playing?” -&gt; “football”).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> TimeDistributed</span><br><span class="line"></span><br><span class="line">video_input = Input(shape=(<span class="number">100</span>, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>))</span><br><span class="line"><span class="comment"># This is our video encoded via the previously trained vision_model (weights are reused)</span></span><br><span class="line">encoded_frame_sequence = TimeDistributed(vision_model)(video_input)  <span class="comment"># the output will be a sequence of vectors</span></span><br><span class="line">encoded_video = LSTM(<span class="number">256</span>)(encoded_frame_sequence)  <span class="comment"># the output will be a vector</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This is a model-level representation of the question encoder, reusing the same weights as before:</span></span><br><span class="line">question_encoder = Model(inputs=question_input, outputs=encoded_question)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's use it to encode the question:</span></span><br><span class="line">video_question_input = Input(shape=(<span class="number">100</span>,), dtype=<span class="string">'int32'</span>)</span><br><span class="line">encoded_video_question = question_encoder(video_question_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># And this is our video question answering model:</span></span><br><span class="line">merged = keras.layers.concatenate([encoded_video, encoded_video_question])</span><br><span class="line">output = Dense(<span class="number">1000</span>, activation=<span class="string">'softmax'</span>)(merged)</span><br><span class="line">video_qa_model = Model(inputs=[video_input, video_question_input], outputs=output)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/index/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/H-DenseUNet-master/H-DenseUNet-master/Keras-2.0.8/docs/templates/callbacks/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+
+
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/cat.jpg" alt="童双双">
+            
+              <p class="site-author-name" itemprop="name">童双双</p>
+              <p class="site-description motion-element" itemprop="description">年华似水 匆匆一瞥 多少岁月 轻描淡写</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+        
+
+
+
+            
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+            <h3 class="widget-title">Tag Cloud</h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow2-0/">Tensorflow2.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keras/">keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协同过滤/">协同过滤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐算法/">推荐算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐系统/">推荐系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模型评估与选择/">模型评估与选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+            </div>
+            
+
+
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/TSS2" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://sklearn.apachecn.org" target="_blank" title="sklearn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>sklearn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tensorflow.google.cn/" target="_blank" title="Tensorflow">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Tensorflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-started-with-the-Keras-functional-API"><span class="nav-number">1.</span> <span class="nav-text">Getting started with the Keras functional API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#First-example-a-densely-connected-network"><span class="nav-number">1.1.</span> <span class="nav-text">First example: a densely-connected network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#All-models-are-callable-just-like-layers"><span class="nav-number">1.2.</span> <span class="nav-text">All models are callable, just like layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-input-and-multi-output-models"><span class="nav-number">1.3.</span> <span class="nav-text">Multi-input and multi-output models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shared-layers"><span class="nav-number">1.4.</span> <span class="nav-text">Shared layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-concept-of-layer-“node”"><span class="nav-number">1.5.</span> <span class="nav-text">The concept of layer “node”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-examples"><span class="nav-number">1.6.</span> <span class="nav-text">More examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inception-module"><span class="nav-number">1.6.1.</span> <span class="nav-text">Inception module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Residual-connection-on-a-convolution-layer"><span class="nav-number">1.6.2.</span> <span class="nav-text">Residual connection on a convolution layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shared-vision-model"><span class="nav-number">1.6.3.</span> <span class="nav-text">Shared vision model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-question-answering-model"><span class="nav-number">1.6.4.</span> <span class="nav-text">Visual question answering model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-question-answering-model"><span class="nav-number">1.6.5.</span> <span class="nav-text">Video question answering model</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">童双双</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+ 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: decodeURI(window.location.pathname), 
+               owner: 'TSS2',
+               repo: 'TSS2.github.io',
+               oauth: {
+                   client_id: '624d201125f2580545ab',
+                   client_secret: '35238e26f8067cff44176e8a83e37e1bc303bb73',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
