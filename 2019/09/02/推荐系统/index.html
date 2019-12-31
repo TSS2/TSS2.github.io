@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="推荐算法分支 基于用户投票的推荐算法 协同过滤推荐算法 基于内容的推荐算法 混合推荐算法 流行度推荐算法  基于用户投票的推荐算法 WR = \frac{v}{v+m}R + \frac{m}{v+m}C WR， 加权得分（weighted rating）。 R，该电影的用户投票的平均得分（Rating）。 v，该电影的投票人数（votes）。 m，排名前250名的电影的最低投票数（现在为3000">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-24T06:53:20.394Z">
+<meta property="og:updated_time" content="2019-12-31T05:18:42.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="推荐系统">
 <meta name="twitter:description" content="推荐算法分支 基于用户投票的推荐算法 协同过滤推荐算法 基于内容的推荐算法 混合推荐算法 流行度推荐算法  基于用户投票的推荐算法 WR = \frac{v}{v+m}R + \frac{m}{v+m}C WR， 加权得分（weighted rating）。 R，该电影的用户投票的平均得分（Rating）。 v，该电影的投票人数（votes）。 m，排名前250名的电影的最低投票数（现在为3000">
@@ -413,8 +413,8 @@ w_{ij} = \frac{|N(i) \cap N(j)|}{\sqrt{|N(i)||N(j)|}}</script><p>根据物品相
 p_{uj} = \sum\limits_{i \in N(u)\cap S(j,k)}w_{ji}r_{ui}\tag{0}</script><p>p(u,j)：用户u对物品j的兴趣</p>
 <p>N(u)：用户喜欢的物品集合（i是该用户喜欢的某一个物品）</p>
 <p>S(j,K)：表示和物品i最相似的K个物品的集合（j是集合中的某一个物品）</p>
-<p>\(w_{ji}\)：表示物品i和物品j的相似度</p>
-<p>\(r_{ui}\)：表示用户u对物品i的兴趣（这里简化都为1）</p>
+<p>$w_{ji}$：表示物品i和物品j的相似度</p>
+<p>$r_{ui}$：表示用户u对物品i的兴趣（这里简化都为1）</p>
 <p>该公式的含义：和用户历史感兴趣的物品越相似的物品，越有可能在用户的推荐列表中获得较高的排名</p>
 <h4 id="基于用户的协同过滤算法"><a href="#基于用户的协同过滤算法" class="headerlink" title="基于用户的协同过滤算法"></a>基于用户的协同过滤算法</h4><p>距离计算计算方式有以下几种：</p>
 <ul>
