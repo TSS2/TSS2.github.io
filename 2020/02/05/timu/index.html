@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="计算行列式  D_n =  \begin{vmatrix} 1+x_1 &amp; 1+x^2_1 &amp; ... &amp; 1+x^n_1 \\\\ 1+x_2 &amp; 1+x^2_2 &amp; ... &amp; 1+x^n_2 \\\\ ... &amp; ... &amp; ... &amp; ... \\\\ 1+x_n &amp; 1+x^2_n &amp; ... &amp; 1+x^n_n \end{vmatrix}先加边，得  D_n =  \begin{vma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-05T08:50:41.901Z">
+<meta property="og:updated_time" content="2020-02-05T08:56:23.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="行列式">
 <meta name="twitter:description" content="计算行列式  D_n =  \begin{vmatrix} 1+x_1 &amp; 1+x^2_1 &amp; ... &amp; 1+x^n_1 \\\\ 1+x_2 &amp; 1+x^2_2 &amp; ... &amp; 1+x^n_2 \\\\ ... &amp; ... &amp; ... &amp; ... \\\\ 1+x_n &amp; 1+x^2_n &amp; ... &amp; 1+x^n_n \end{vmatrix}先加边，得  D_n =  \begin{vma">
@@ -491,8 +491,8 @@ A_n&=\prod_{1 \leq i < j \leq n}(x_j-x_i)
 <script type="math/tex; mode=display">
 \begin{aligned}
 D_n = x_1x_2...x_n\prod_{1 \leq i < j \leq n}(x_j-x_i)+\\
-(-1)^4(x_1x_2...x_{n-2}+x_2x_3...x_{n-3}x_n+...+x_3x_4...x_n) \prod_{1 \leq i < j \leq n}(x_j-x_i)+ \\
-(-1)^5(x_1x_2...x_{n-3}+x_2x_3...x_{n-4}x_n+...+x_4x_5...x_n) \prod_{1 \leq i < j \leq n}(x_j-x_i)+\\
+(-1)^4(x_1x_2...x_{n-1}+x_2x_3...x_{n-2}x_n+...+x_2x_3...x_n) \prod_{1 \leq i < j \leq n}(x_j-x_i)+ \\
+(-1)^5(x_1x_2...x_{n-2}+x_2x_3...x_{n-3}x_n+...+x_3x_4...x_n) \prod_{1 \leq i < j \leq n}(x_j-x_i)+\\
 ...\\
 (-1)^{n+2}(x_1+x_2+...+x_n) \prod_{1 \leq i < j \leq n}(x_j-x_i)+\\
 (-1)^{n+3}\prod_{1 \leq i < j \leq n}(x_j-x_i) \\
