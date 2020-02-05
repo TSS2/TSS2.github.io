@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="计算行列式  D_n =  \begin{vmatrix} 1+x_1 &amp; 1+x^2_1 &amp; ... &amp; 1+x^n_1 \\\\ 1+x_2 &amp; 1+x^2_2 &amp; ... &amp; 1+x^n_2 \\\\ ... &amp; ... &amp; ... &amp; ... \\\\ 1+x_n &amp; 1+x^2_n &amp; ... &amp; 1+x^n_n \end{vmatrix}先加边，得  D_n =  \begin{vma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-05T08:36:24.315Z">
+<meta property="og:updated_time" content="2020-02-05T08:44:03.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="行列式">
 <meta name="twitter:description" content="计算行列式  D_n =  \begin{vmatrix} 1+x_1 &amp; 1+x^2_1 &amp; ... &amp; 1+x^n_1 \\\\ 1+x_2 &amp; 1+x^2_2 &amp; ... &amp; 1+x^n_2 \\\\ ... &amp; ... &amp; ... &amp; ... \\\\ 1+x_n &amp; 1+x^2_n &amp; ... &amp; 1+x^n_n \end{vmatrix}先加边，得  D_n =  \begin{vma">
@@ -454,9 +454,17 @@ A_1=
 1 & x^2_2 & ... & x^n_2 \\\\
 ... & ... & ... & ... \\\\
 1 & x^2_n & ... & x^n_n
+\end{vmatrix}
+ \quad ... \quad
+A_n = 
+\begin{vmatrix}
+1& x_1 &  ... & x^{n-1}_1 \\\\
+1 & x_2 & ... & x^{n-1}_2 \\\\
+... & ... & ... & ... \\\\
+1 & x_n & ... & x^{n-1}_n
 \end{vmatrix}</script><p>将$A_1$添加一个变量$x_{n+1}$得</p>
 <script type="math/tex; mode=display">
-B_1=
+B=
 \begin{vmatrix}
 1& x_1 & x^2_1 & ... & x^n_1 \\\\
 1 & x_2 & x^2_2 & ... & x^n_2 \\\\
@@ -464,7 +472,7 @@ B_1=
 1 & x_n & x^2_n & ... & x^n_n \\\\
 1 & x_{n+1} & x^2_{n+1} & ... & x^n_{n+1}
 \end{vmatrix}
-=\prod_{1 \leq i < j \leq n+1}(x_j-x_i)</script><p>而$A_1$是$B_1$按第$n+1$行展开的展开式中$x_{n+1}$的系数的$(-1)^{n+1+2}$倍</p>
+=\prod_{1 \leq i < j \leq n+1}(x_j-x_i)</script><p>而$A_1$是$B$按第$n+1$行展开的展开式中$x_{n+1}$的系数的$(-1)^{n+1+2}$倍</p>
 <p>$x_{n+1}$的系数为$(-1)^{n-1}(x_1x_2…x_{n-1}+x_2x_3…x_{n-2}x_n+…+x_2x_3…x_n) \prod_{1 \leq i &lt; j \leq n}(x_j-x_i)$</p>
 <p>因此</p>
 <script type="math/tex; mode=display">
