@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$a$为$b$在$f$下的一个原像，$A$为定义域，$B$为陪域（包含了值域）。 $f$的值域（像$Imf$）:$f(A):=\begin{Bmatrix}">
+<meta name="description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组   线性空间的结构 线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$">
 <meta name="keywords" content="线性空间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性空间">
 <meta property="og:url" content="#/2020/02/09/线性空间/index.html">
 <meta property="og:site_name" content="童双双">
-<meta property="og:description" content="线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$a$为$b$在$f$下的一个原像，$A$为定义域，$B$为陪域（包含了值域）。 $f$的值域（像$Imf$）:$f(A):=\begin{Bmatrix}">
+<meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组   线性空间的结构 线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-13T04:47:30.793Z">
+<meta property="og:updated_time" content="2020-02-13T06:27:54.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
-<meta name="twitter:description" content="线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$a$为$b$在$f$下的一个原像，$A$为定义域，$B$为陪域（包含了值域）。 $f$的值域（像$Imf$）:$f(A):=\begin{Bmatrix}">
+<meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组   线性空间的结构 线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个映射。$b$称为$a$在$f$下的像，记作$f(a)$，$">
 
 
 
@@ -403,7 +403,26 @@
       
 
       
-        <h1 id="线性空间"><a href="#线性空间" class="headerlink" title="线性空间"></a>线性空间</h1><h2 id="线性空间的定义"><a href="#线性空间的定义" class="headerlink" title="线性空间的定义"></a>线性空间的定义</h2><p>若对应法则</p>
+        <!-- TOC -->
+<ul>
+<li><a href="#线性空间">线性空间</a><ul>
+<li><a href="#线性空间的定义">线性空间的定义</a></li>
+<li><a href="#线性空间的性质">线性空间的性质</a></li>
+<li><a href="#线性子空间">线性子空间</a><ul>
+<li><a href="#生成子空间">生成子空间</a></li>
+</ul>
+</li>
+<li><a href="#线性相关与线性无关">线性相关与线性无关</a><ul>
+<li><a href="#极大线性无关组">极大线性无关组</a></li>
+</ul>
+</li>
+<li><a href="#线性空间的结构">线性空间的结构</a></li>
+<li><a href="#线性空间的度量">线性空间的度量</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="线性空间"><a href="#线性空间" class="headerlink" title="线性空间"></a>线性空间</h1><h2 id="线性空间的定义"><a href="#线性空间的定义" class="headerlink" title="线性空间的定义"></a>线性空间的定义</h2><p>若对应法则</p>
 <script type="math/tex; mode=display">f:A \longrightarrow B</script><script type="math/tex; mode=display">\quad a \longmapsto b</script><p>其中每一个$a$对应的$b$是唯一的，则称$f$是$A$到$B$的一个<font color="red">映射</font>。$b$称为$a$在$f$下的<strong>像</strong>，记作$f(a)$，$a$为$b$在$f$下的一个<strong>原像</strong>，$A$为<strong>定义域</strong>，$B$为<strong>陪域</strong>（包含了值域）。</p>
 <p>$f$的值域（<font color="red">像$Imf$</font>）:$f(A):=\begin{Bmatrix}f(a)|a \in A \end{Bmatrix}$</p>
 <p>若$f(A)=B$,则称$f$为一个满射；</p>
@@ -501,11 +520,7 @@ x_1a_{s1}+...+x_ra_{sr}=0
 <hr>
 <p><strong>推论1</strong>：设向量组$\beta_1,…,\beta_r$可以由向量组$\alpha_1,…,\alpha_s$线性表出，如果$\beta_1,..,\beta_r$线性无关，则$r \leq s$。</p>
 <p><strong>推论2</strong>：等价的线性无关的两个向量组所含向量的个数相等。</p>
-<pre class="mermaid">sequenceDiagram
-A->>B: 是否已收到消息？
-B-->>A: 已收到消息...</pre>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>27 23</p>
 <h2 id="线性空间的结构"><a href="#线性空间的结构" class="headerlink" title="线性空间的结构"></a>线性空间的结构</h2><h2 id="线性空间的度量"><a href="#线性空间的度量" class="headerlink" title="线性空间的度量"></a>线性空间的度量</h2>
       
     </div>
