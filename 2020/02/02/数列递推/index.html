@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$通项公式求法不动点法 显然数列的极限是方程$x = cx+d$的一个根，这个方程也是映射$f(x) = cx+d$的不动点。 显然方程的根为$x_0=\frac{d}{1-c}$,则有  a_{n+1}-x_0=ca_n+d-x_0将$x_0=\frac{d}{1-c}$代入得  a_{n+1}-\frac{d}{1-c} =">
+<meta name="description" content="特征根求数列通项公式 $a_1=b,a_{n+1} = ca_n+d,$通项公式求法 $a_1=\alpha,a_2=\beta,a_{n+2}=pa_{n+1}+qa_,$通项公式求法 $a_{n+1} = \frac{Aa_n + B}{Ca_n + D},C \neq 0,AD \neq BC,$通项公式求法     特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$">
 <meta name="keywords" content="数列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数列">
 <meta property="og:url" content="#/2020/02/02/数列递推/index.html">
 <meta property="og:site_name" content="童双双">
-<meta property="og:description" content="特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$通项公式求法不动点法 显然数列的极限是方程$x = cx+d$的一个根，这个方程也是映射$f(x) = cx+d$的不动点。 显然方程的根为$x_0=\frac{d}{1-c}$,则有  a_{n+1}-x_0=ca_n+d-x_0将$x_0=\frac{d}{1-c}$代入得  a_{n+1}-\frac{d}{1-c} =">
+<meta property="og:description" content="特征根求数列通项公式 $a_1=b,a_{n+1} = ca_n+d,$通项公式求法 $a_1=\alpha,a_2=\beta,a_{n+2}=pa_{n+1}+qa_,$通项公式求法 $a_{n+1} = \frac{Aa_n + B}{Ca_n + D},C \neq 0,AD \neq BC,$通项公式求法     特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-05T09:06:00.376Z">
+<meta property="og:updated_time" content="2020-02-13T06:44:38.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数列">
-<meta name="twitter:description" content="特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$通项公式求法不动点法 显然数列的极限是方程$x = cx+d$的一个根，这个方程也是映射$f(x) = cx+d$的不动点。 显然方程的根为$x_0=\frac{d}{1-c}$,则有  a_{n+1}-x_0=ca_n+d-x_0将$x_0=\frac{d}{1-c}$代入得  a_{n+1}-\frac{d}{1-c} =">
+<meta name="twitter:description" content="特征根求数列通项公式 $a_1=b,a_{n+1} = ca_n+d,$通项公式求法 $a_1=\alpha,a_2=\beta,a_{n+2}=pa_{n+1}+qa_,$通项公式求法 $a_{n+1} = \frac{Aa_n + B}{Ca_n + D},C \neq 0,AD \neq BC,$通项公式求法     特征根求数列通项公式$a_1=b,a_{n+1} = ca_n+d,$">
 
 
 
@@ -403,7 +403,17 @@
       
 
       
-        <h1 id="特征根求数列通项公式"><a href="#特征根求数列通项公式" class="headerlink" title="特征根求数列通项公式"></a>特征根求数列通项公式</h1><h2 id="a-1-b-a-n-1-ca-n-d-通项公式求法"><a href="#a-1-b-a-n-1-ca-n-d-通项公式求法" class="headerlink" title="$a_1=b,a_{n+1} = ca_n+d,$通项公式求法"></a>$a_1=b,a_{n+1} = ca_n+d,$通项公式求法</h2><p><strong><font color="red">不动点法</font></strong></p>
+        <!-- TOC -->
+<ul>
+<li><a href="#特征根求数列通项公式">特征根求数列通项公式</a><ul>
+<li><a href="#a_1ba_n1--ca_nd通项公式求法">$a_1=b,a_{n+1} = ca_n+d,$通项公式求法</a></li>
+<li><a href="#a_1\alphaa_2\betaa_n2pa_n1qa_通项公式求法">$a_1=\alpha,a_2=\beta,a_{n+2}=pa_{n+1}+qa_,$通项公式求法</a></li>
+<li><a href="#a_n1--\fracaa_n--bca_n--dc-\neq-0ad-\neq-bc通项公式求法">$a_{n+1} = \frac{Aa_n + B}{Ca_n + D},C \neq 0,AD \neq BC,$通项公式求法</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="特征根求数列通项公式"><a href="#特征根求数列通项公式" class="headerlink" title="特征根求数列通项公式"></a>特征根求数列通项公式</h1><h2 id="a-1-b-a-n-1-ca-n-d-通项公式求法"><a href="#a-1-b-a-n-1-ca-n-d-通项公式求法" class="headerlink" title="$a_1=b,a_{n+1} = ca_n+d,$通项公式求法"></a>$a_1=b,a_{n+1} = ca_n+d,$通项公式求法</h2><p><strong><font color="red">不动点法</font></strong></p>
 <p>显然数列的极限是方程$x = cx+d$的一个根，这个方程也是映射$f(x) = cx+d$的不动点。</p>
 <p>显然方程的根为$x_0=\frac{d}{1-c}$,则有</p>
 <script type="math/tex; mode=display">
@@ -494,8 +504,8 @@ a_{n+1} - \alpha = \frac{Aa_n + B}{Ca_n + D} - \alpha=\frac{(a_n - \alpha)(A - C
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/30/numpy知识点梳理/" rel="next" title="numpy知识点梳理">
-                <i class="fa fa-chevron-left"></i> numpy知识点梳理
+              <a href="/2019/12/30/Tensorflow2.0/" rel="next" title="Tensorflow2.0-keras">
+                <i class="fa fa-chevron-left"></i> Tensorflow2.0-keras
               </a>
             
           </div>
