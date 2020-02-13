@@ -909,7 +909,7 @@ a_{n+1}-x_0=ca_n+d-x_
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="#/2019/12/30/svm/">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/30/Tensorflow2.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="童双双">
@@ -928,7 +928,137 @@ a_{n+1}-x_0=ca_n+d-x_
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/30/svm/" itemprop="url">支持向量机</a></h1>
+                <a class="post-title-link" href="/2019/12/30/Tensorflow2.0/" itemprop="url">Tensorflow2.0-keras</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T00:00:00+08:00">
+                2019-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          优化函数SGD（随机梯度下降优化器）
+RMSprop(训练循环神经网络RNN常用的优化器)
+Adam优化器
+学习速率合适的学习速率，损失函数随时间下降，直到一个底部不合适的学习速率；不合适的学习速率，损失函数可能会发生震荡。
+反向传播算法
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/30/Tensorflow2.0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/30/numpy知识点梳理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="童双双">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="童双双">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/30/numpy知识点梳理/" itemprop="url">numpy知识点梳理</a></h1>
         
 
         <div class="post-meta">
@@ -963,8 +1093,8 @@ a_{n+1}-x_0=ca_n+d-x_
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/监督学习/" itemprop="url" rel="index">
-                    <span itemprop="name">监督学习</span>
+                  <a href="/categories/numpy/" itemprop="url" rel="index">
+                    <span itemprop="name">numpy</span>
                   </a>
                 </span>
 
@@ -1002,15 +1132,32 @@ a_{n+1}-x_0=ca_n+d-x_
       
         
           
-          SVM适合处理什么样的数据
-高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】
+          Numpy相关知识点
+numpy中的矩阵和向量矩阵与向量的创建与索引创建矩阵要在numpy中构造矩阵，我们在列表中列出矩阵的行，并将该列表传递给numpy数组构造函数。
+A = np.array([[1,-1,2],[3,2,0]])
 
-线性核VS径向基核
-训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会
+
+
+
+1
+-1
+2
+
+
+
+
+3
+2
+0
+
+
+
+
+创建向量向量只
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/12/30/svm/#more" rel="contents">
+            <a class="btn" href="/2019/12/30/numpy知识点梳理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1192,136 +1339,6 @@ ja
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="#/2019/12/30/Tensorflow2.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="童双双">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="童双双">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/30/Tensorflow2.0/" itemprop="url">Tensorflow2.0-keras</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T00:00:00+08:00">
-                2019-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          优化函数SGD（随机梯度下降优化器）
-RMSprop(训练循环神经网络RNN常用的优化器)
-Adam优化器
-学习速率合适的学习速率，损失函数随时间下降，直到一个底部不合适的学习速率；不合适的学习速率，损失函数可能会发生震荡。
-反向传播算法
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/30/Tensorflow2.0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="#/2019/12/30/Tensorflow2.0入门教程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,7 +1466,7 @@ Eager执行TensorFlow的Eager执行时一
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="#/2019/12/30/numpy知识点梳理/">
+    <link itemprop="mainEntityOfPage" href="#/2019/12/30/svm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="童双双">
@@ -1468,7 +1485,7 @@ Eager执行TensorFlow的Eager执行时一
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/30/numpy知识点梳理/" itemprop="url">numpy知识点梳理</a></h1>
+                <a class="post-title-link" href="/2019/12/30/svm/" itemprop="url">支持向量机</a></h1>
         
 
         <div class="post-meta">
@@ -1503,8 +1520,8 @@ Eager执行TensorFlow的Eager执行时一
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/numpy/" itemprop="url" rel="index">
-                    <span itemprop="name">numpy</span>
+                  <a href="/categories/监督学习/" itemprop="url" rel="index">
+                    <span itemprop="name">监督学习</span>
                   </a>
                 </span>
 
@@ -1542,32 +1559,15 @@ Eager执行TensorFlow的Eager执行时一
       
         
           
-          Numpy相关知识点
-numpy中的矩阵和向量矩阵与向量的创建与索引创建矩阵要在numpy中构造矩阵，我们在列表中列出矩阵的行，并将该列表传递给numpy数组构造函数。
-A = np.array([[1,-1,2],[3,2,0]])
+          SVM适合处理什么样的数据
+高维稀疏，样本少。【参数只与支持向量有关，数量少，所以需要的样本少，由于参数跟维度没有关系，所以可以处理高维问题】
 
-
-
-
-1
--1
-2
-
-
-
-
-3
-2
-0
-
-
-
-
-创建向量向量只
+线性核VS径向基核
+训练速度：线性核只需要调节惩罚因子一个参数，所以速度快；径向基核函数还需要调节γ，所以训练速度变慢。【调参一般使用交叉验证，所以速度会
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/12/30/numpy知识点梳理/#more" rel="contents">
+            <a class="btn" href="/2019/12/30/svm/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
