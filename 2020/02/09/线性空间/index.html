@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构   线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，">
+<meta name="description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并     线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad">
 <meta name="keywords" content="线性空间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性空间">
 <meta property="og:url" content="#/2020/02/09/线性空间/index.html">
 <meta property="og:site_name" content="童双双">
-<meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构   线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，">
+<meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并     线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-16T01:05:52.810Z">
+<meta property="og:updated_time" content="2020-02-16T03:32:58.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
-<meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构   线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，">
+<meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并     线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad">
 
 
 
@@ -422,6 +422,12 @@
 <li><a href="#矩阵的秩">矩阵的秩</a></li>
 <li><a href="#线性方程组有解判别定理">线性方程组有解判别定理</a></li>
 <li><a href="#齐次线性方程组解集的结构">齐次线性方程组解集的结构</a></li>
+<li><a href="#非齐次线性方程组解集的结构">非齐次线性方程组解集的结构</a></li>
+<li><a href="#子空间的运算">子空间的运算</a><ul>
+<li><a href="#子空间的交">子空间的交</a></li>
+<li><a href="#子空间的并">子空间的并</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#线性空间的度量">线性空间的度量</a></li>
@@ -624,8 +630,8 @@ x_r&=-b_{r,r+1}x_{r+1}-b_{r,r+2}x_{r+2}-...-b_{r,n}x_n
 \begin{pmatrix}
 0\\\\0\\\\ ... \\\\1 
 \end{pmatrix} \quad \quad (2)</script><p>得到方程组$(1)$的$n-r$解</p>
-<p>$\eta_1=\begin{pmatrix}b_{1,r+1}\\\\ … \\\\b_{r,r+1}\\\\1 \\\\0\\\\0\\\\ … \\\\0\end{pmatrix} ,\quad\eta_2=\begin{pmatrix}b_{1,r+2}\\\\ … \\\\b_{r,r+2}\\\\0 \\\\1\\\\0\\\\ … \\\\0\end{pmatrix} ,…,\quad\eta_{n-r}=\begin{pmatrix}b_{1,n}\\\\ … \\\\b_{r,n}\\\\0 \\\\0 \\\\ … \\\\0 \\\\1\end{pmatrix} \quad\quad(3)$</p>
-<p>易看出向量组$(2)$线性无关，从而它们的延伸组$\eta_1,…,\eta_{n-r}$也线性无关。</p>
+<script type="math/tex; mode=display">
+\eta_1=\begin{pmatrix}b_{1,r+1}\\\\ ... \\\\b_{r,r+1}\\\\1 \\\\0\\\\0\\\\ ... \\\\0\end{pmatrix} ,\quad\eta_2=\begin{pmatrix}b_{1,r+2}\\\\ ... \\\\b_{r,r+2}\\\\0 \\\\1\\\\0\\\\ ... \\\\0\end{pmatrix} ,...,\quad\eta_{n-r}=\begin{pmatrix}b_{1,n}\\\\ ... \\\\b_{r,n}\\\\0 \\\\0 \\\\ ... \\\\0 \\\\1\end{pmatrix} \quad\quad(3)</script><p>易看出向量组$(2)$线性无关，从而它们的延伸组$\eta_1,…,\eta_{n-r}$也线性无关。</p>
 <p>任取$W$的一个解向量</p>
 <script type="math/tex; mode=display">
 \eta=\begin{pmatrix}
@@ -654,8 +660,44 @@ c_n
 -b_{1,n}\\\\ ... \\\\-b_{r,n}\\\\0 \\\\0 \\\\ ... \\\\0 \\\\1
 \end{pmatrix}
 =c_{r+1}\eta_1+...+c_n\eta_{n-r}</script><p>因此$\eta_1,…,\eta_{n-r}$是$W$的一个基，从而$dimW=n-r=n=rank(A)$</p>
-<p>于是证明：<br><strong>定理1</strong>：设数域$K$上$n$元齐次线性方程组$(1)$有解时，它的解空间$W$的维数$dimW=n-rank(A)$。($A$为系数矩阵)</p>
-<p>39-14</p>
+<p>于是证明：</p>
+<p><strong>定理1</strong>：设数域$K$上$n$元齐次线性方程组$(1)$有解时，它的解空间$W$的维数$dimW=n-rank(A)$。($A$为系数矩阵)把W的一个基称为齐次线性方程组的(1)的一<strong>基础解系</strong>。</p>
+<p>设$\eta_!,..,\eta_{n-r}$是齐次线性方程组$(1)$的一个基础解系，则$(1)$的全部解为：$\begin{Bmatrix}k_1\eta_1+…+k_{n-r}\eta_{n-r}\quad|\quad k_1,…,k_{n-r}\in K\end{Bmatrix}$</p>
+<h3 id="非齐次线性方程组解集的结构"><a href="#非齐次线性方程组解集的结构" class="headerlink" title="非齐次线性方程组解集的结构"></a>非齐次线性方程组解集的结构</h3><p>数域$K$上非齐次线性方程组</p>
+<script type="math/tex; mode=display">x_1\alpha_1+...+x_n\alpha_n=\beta,(其中\beta\neq 0)\quad(1)</script><p>的解集记作$U$。相应的齐次线性方程组</p>
+<script type="math/tex; mode=display">x_1\alpha_1+...+x_n\alpha_n=0,\quad(2)</script><p>的解集记作$W$。</p>
+<p><strong>性质1</strong>：若$\gamma,\delta \in U$，则$\gamma-\delta \in W$</p>
+<p><em>证明：令$\gamma=(a_1,…,a_n),\delta=(b_1,…,b_n)$，则</em></p>
+<script type="math/tex; mode=display">\begin{cases}
+a_1\alpha_1+...+a_n\alpha_n=\beta,\\\\
+b_1\alpha_1+...+b_n\alpha_n=\beta.
+\end{cases}</script><p><em>相减得</em></p>
+<script type="math/tex; mode=display">
+(a_1-b_1)\alpha_1+...+(a_n-b_n)\alpha_n=0</script><p><em>显然$\gamma-\delta$是齐次线性方程组$(2)$的解，则</em>$\gamma-\delta \in W$。</p>
+<p><strong>性质2</strong>：若$\gamma \in U,\delta \in W$，则$\gamma+\delta \in U$</p>
+<p><em>证明：令$\gamma=(a_1,…,a_n),\delta=(b_1,…,b_n)$，则</em></p>
+<script type="math/tex; mode=display">\begin{cases}
+a_1\alpha_1+...+a_n\alpha_n=\beta,\\\\
+b_1\alpha_1+...+b_n\alpha_n=0.
+\end{cases}</script><p><em>相加得</em></p>
+<script type="math/tex; mode=display">
+(a_1+b_1)\alpha_1+...+(a_n+b_n)\alpha_n=\beta</script><p><em>显然$\gamma+\delta$是非齐次线性方程组$(1)$的解，则</em>$\gamma+\delta \in U$。</p>
+<p>设$\gamma_0\in U$（称$\gamma_0$是非齐次线性方程组的一个<strong>特解</strong>）</p>
+<script type="math/tex; mode=display">
+\gamma_0+W:=\begin{Bmatrix}\gamma_0+\eta\quad|\quad \eta \in W\end{Bmatrix}=U</script><p><em>证明：由性质2可知$\gamma_0+W\subseteq U$，又任取$\gamma \in U$，则由性质1$\gamma-\gamma_0 \in W$，$\gamma-\gamma_0$记为$\eta$，从而$\gamma \in \gamma_0+W$，因此$\gamma_0+W=U$</em>。</p>
+<p>于是我们证明了</p>
+<p><strong>定理1</strong>：数域$K$上非齐次线性方程组$(1)$的解集$U$为$U=\gamma_0+W$。</p>
+<p>其中，把$\gamma_0+W$称为$W$型的一个<strong>线性流形</strong>或称为$W$的一个<strong>陪集</strong>。</p>
+<p>设$W$的一个基为$\eta_1,…,\eta_{n-r}$，则非齐次线性方程组$(1)$的全部解为$\gamma_0+k_1\eta_1+…+k_{n-r}\eta_{n-r}$，其中$k_1,…,k_{n-r}\in K,\gamma_0$是非齐次线性方程组的一个<strong>特解</strong>。</p>
+<h3 id="子空间的运算"><a href="#子空间的运算" class="headerlink" title="子空间的运算"></a>子空间的运算</h3><p>设$V$是数域$K$上的一个线性空间</p>
+<h4 id="子空间的交"><a href="#子空间的交" class="headerlink" title="子空间的交"></a>子空间的交</h4><p><strong>定理1</strong>：设$V_1,V_2$都是$V$的一个子空间，则$V_1\cap V_2$也是$V$的一个子空间。</p>
+<p><em>证明：任取$\alpha,\beta \in V_1\cap v_2$，则$\alpha+\beta \in V_1 \cap V_2$；任取$\gamma \in V_1 \cap V_2$，则$k\gamma \in V_1\cap V_2$</em></p>
+<p>满足：</p>
+<script type="math/tex; mode=display">
+V_1 \cap V_2 = V_2 \cap V_1 \\\\
+(V_1 \cap V_2) \cap V_3 = V_1 \cap (V_2 \cap V_3)</script><p>从而$\cap^s_{i=1}V_i:=V_1 \cap V_2 \cap … \cap V_s$也是$V$的一个子空间。</p>
+<h4 id="子空间的并"><a href="#子空间的并" class="headerlink" title="子空间的并"></a>子空间的并</h4><p>子空间的并不是子空间</p>
+<p>41 06</p>
 <h2 id="线性空间的度量"><a href="#线性空间的度量" class="headerlink" title="线性空间的度量"></a>线性空间的度量</h2>
       
     </div>
@@ -686,8 +728,8 @@ c_n
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/05/timu/" rel="next" title="行列式">
-                <i class="fa fa-chevron-left"></i> 行列式
+              <a href="/2020/02/09/线性方程组/" rel="next" title="线性方程组">
+                <i class="fa fa-chevron-left"></i> 线性方程组
               </a>
             
           </div>
@@ -695,10 +737,6 @@ c_n
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/09/线性方程组/" rel="prev" title="线性方程组">
-                线性方程组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -872,7 +910,7 @@ c_n
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性空间"><span class="nav-number">1.</span> <span class="nav-text">线性空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的定义"><span class="nav-number">1.1.</span> <span class="nav-text">线性空间的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的性质"><span class="nav-number">1.2.</span> <span class="nav-text">线性空间的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性子空间"><span class="nav-number">1.3.</span> <span class="nav-text">线性子空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成子空间"><span class="nav-number">1.3.1.</span> <span class="nav-text">生成子空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性相关与线性无关"><span class="nav-number">1.4.</span> <span class="nav-text">线性相关与线性无关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极大线性无关组，向量组的秩"><span class="nav-number">1.4.1.</span> <span class="nav-text">极大线性无关组，向量组的秩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的结构"><span class="nav-number">1.5.</span> <span class="nav-text">线性空间的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基"><span class="nav-number">1.5.1.</span> <span class="nav-text">基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基与维数"><span class="nav-number">1.5.2.</span> <span class="nav-text">基与维数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的秩"><span class="nav-number">1.5.3.</span> <span class="nav-text">矩阵的秩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程组有解判别定理"><span class="nav-number">1.5.4.</span> <span class="nav-text">线性方程组有解判别定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#齐次线性方程组解集的结构"><span class="nav-number">1.5.5.</span> <span class="nav-text">齐次线性方程组解集的结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的度量"><span class="nav-number">1.6.</span> <span class="nav-text">线性空间的度量</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性空间"><span class="nav-number">1.</span> <span class="nav-text">线性空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的定义"><span class="nav-number">1.1.</span> <span class="nav-text">线性空间的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的性质"><span class="nav-number">1.2.</span> <span class="nav-text">线性空间的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性子空间"><span class="nav-number">1.3.</span> <span class="nav-text">线性子空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成子空间"><span class="nav-number">1.3.1.</span> <span class="nav-text">生成子空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性相关与线性无关"><span class="nav-number">1.4.</span> <span class="nav-text">线性相关与线性无关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极大线性无关组，向量组的秩"><span class="nav-number">1.4.1.</span> <span class="nav-text">极大线性无关组，向量组的秩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的结构"><span class="nav-number">1.5.</span> <span class="nav-text">线性空间的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基"><span class="nav-number">1.5.1.</span> <span class="nav-text">基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基与维数"><span class="nav-number">1.5.2.</span> <span class="nav-text">基与维数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的秩"><span class="nav-number">1.5.3.</span> <span class="nav-text">矩阵的秩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程组有解判别定理"><span class="nav-number">1.5.4.</span> <span class="nav-text">线性方程组有解判别定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#齐次线性方程组解集的结构"><span class="nav-number">1.5.5.</span> <span class="nav-text">齐次线性方程组解集的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非齐次线性方程组解集的结构"><span class="nav-number">1.5.6.</span> <span class="nav-text">非齐次线性方程组解集的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子空间的运算"><span class="nav-number">1.5.7.</span> <span class="nav-text">子空间的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子空间的交"><span class="nav-number">1.5.7.1.</span> <span class="nav-text">子空间的交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子空间的并"><span class="nav-number">1.5.7.2.</span> <span class="nav-text">子空间的并</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性空间的度量"><span class="nav-number">1.6.</span> <span class="nav-text">线性空间的度量</span></a></li></ol></li></ol></div>
             
 
           </div>
