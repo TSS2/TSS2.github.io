@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构   线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-15T15:38:45.841Z">
+<meta property="og:updated_time" content="2020-02-16T01:05:52.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
 <meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构   线性空间的度量     线性空间线性空间的定义若对应法则 f:A \longrightarrow B\quad a \longmapsto b其中每一个$a$对应的$b$是唯一的，">
@@ -614,13 +614,46 @@ x_1&=-b_{1,r+1}x_{r+1}-b_{1,r+2}x_{r+2}-...-b_{1,n}x_n,\\\\
 ...\\\\
 x_r&=-b_{r,r+1}x_{r+1}-b_{r,r+2}x_{r+2}-...-b_{r,n}x_n
 \end{cases}</script><p>让自由未知量$x_{r+1},…,x_n$分别取$n-r$组数</p>
-<p>$\begin{pmatrix}1\\\\0\\\...\\\\0 \end{pmatrix} ,\quad \begin{pmatrix}0\\\\1\\\...\\\\0 \end{pmatrix} ,…,\quad\begin{pmatrix}0\\\\0\\\...\\\\1 \end{pmatrix} \quad \quad (2)$</p>
-<p>得到方程组$(1)$的$n-r$解</p>
-<p>$\eta_1=\begin{pmatrix}b_{1,r+1}\\\...\\\\b_{r,r+1}\\\\1 \\\\0\\\\0\\\...\\\\0\end{pmatrix} ,\quad\eta_2=\begin{pmatrix}b_{1,r+2}\\\...\\\\b_{r,r+2}\\\\0 \\\\1\\\\0\\\...\\\\0\end{pmatrix} ,…,\quad\eta_{n-r}=\begin{pmatrix}b_{1,n}\\\...\\\\b_{r,n}\\\\0 \\\\0 \\\... \\\\0 \\\\1\end{pmatrix} \quad\quad(3)$</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+1\\\\0\\\\ ...\\\\0 
+\end{pmatrix} ,\quad 
+\begin{pmatrix}
+0\\\\1\\\\ ... \\\\0 
+\end{pmatrix},...,\quad
+\begin{pmatrix}
+0\\\\0\\\\ ... \\\\1 
+\end{pmatrix} \quad \quad (2)</script><p>得到方程组$(1)$的$n-r$解</p>
+<p>$\eta_1=\begin{pmatrix}b_{1,r+1}\\\\ … \\\\b_{r,r+1}\\\\1 \\\\0\\\\0\\\\ … \\\\0\end{pmatrix} ,\quad\eta_2=\begin{pmatrix}b_{1,r+2}\\\\ … \\\\b_{r,r+2}\\\\0 \\\\1\\\\0\\\\ … \\\\0\end{pmatrix} ,…,\quad\eta_{n-r}=\begin{pmatrix}b_{1,n}\\\\ … \\\\b_{r,n}\\\\0 \\\\0 \\\\ … \\\\0 \\\\1\end{pmatrix} \quad\quad(3)$</p>
 <p>易看出向量组$(2)$线性无关，从而它们的延伸组$\eta_1,…,\eta_{n-r}$也线性无关。</p>
 <p>任取$W$的一个解向量</p>
-<p>$\eta=\begin{pmatrix}c_1\\\...\\\\c_r\\\\c_{r+1}\\\...\\\\c_n\end{pmatrix}=\begin{pmatrix}-b_{1,r+1}c_{r+1}-b_{1,r+2}c_{r+2}-…-b_{1,n}c_n\\\\ …\\\\ -b_{1,r+1}c_{r+1}-b_{r,r+2}c_{r+2}-…-b_{r,n}c_n\\\\ c_{r+1} \\\\ …\\\\ c_n \end{pmatrix}=c_{r+1}\begin{pmatrix}-b_{1,r+1}\\\...\\\-b_{r,r+1}\\\\1 \\\\0\\\\0\\\...\\\\0\end{pmatrix}+…+c_n\begin{pmatrix}-b_{1,n}\\\...\\\-b_{r,n}\\\\0 \\\\0 \\\... \\\\0 \\\\1\end{pmatrix}=c_{r+1}\eta_1+…+c_n\eta_{n-r}$</p>
-<p>因此$\eta_1,…,\eta_{n-r}$是$W$的一个基，从而$dimW=n-r=n=rank(A)$</p>
+<script type="math/tex; mode=display">
+\eta=\begin{pmatrix}
+c_1\\\\ 
+... \\\\
+c_r\\\\
+c_{r+1}\\\\ 
+... \\\\
+c_n
+\end{pmatrix}
+=\begin{pmatrix}
+-b_{1,r+1}c_{r+1}-b_{1,r+2}c_{r+2}-...-b_{1,n}c_n\\\\ 
+... \\\\ 
+-b_{1,r+1}c_{r+1}-b_{r,r+2}c_{r+2}-...-b_{r,n}c_n\\\\ 
+c_{r+1} \\\\ 
+...\\\\ 
+c_n 
+\end{pmatrix}
+=c_{r+1}\begin{pmatrix}
+-b_{1,r+1}\\\\ 
+... \\\\
+-b_{r,r+1}\\\\
+1 \\\\0\\\\0\\\\ ... \\\\0
+\end{pmatrix}
++...+c_n\begin{pmatrix}
+-b_{1,n}\\\\ ... \\\\-b_{r,n}\\\\0 \\\\0 \\\\ ... \\\\0 \\\\1
+\end{pmatrix}
+=c_{r+1}\eta_1+...+c_n\eta_{n-r}</script><p>因此$\eta_1,…,\eta_{n-r}$是$W$的一个基，从而$dimW=n-r=n=rank(A)$</p>
 <p>于是证明：<br><strong>定理1</strong>：设数域$K$上$n$元齐次线性方程组$(1)$有解时，它的解空间$W$的维数$dimW=n-rank(A)$。($A$为系数矩阵)</p>
 <p>39-14</p>
 <h2 id="线性空间的度量"><a href="#线性空间的度量" class="headerlink" title="线性空间的度量"></a>线性空间的度量</h2>
@@ -653,8 +686,8 @@ x_r&=-b_{r,r+1}x_{r+1}-b_{r,r+2}x_{r+2}-...-b_{r,n}x_n
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/线性方程组/" rel="next" title="线性方程组">
-                <i class="fa fa-chevron-left"></i> 线性方程组
+              <a href="/2020/02/05/timu/" rel="next" title="行列式">
+                <i class="fa fa-chevron-left"></i> 行列式
               </a>
             
           </div>
@@ -662,6 +695,10 @@ x_r&=-b_{r,r+1}x_{r+1}-b_{r,r+2}x_{r+2}-...-b_{r,n}x_n
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/09/线性方程组/" rel="prev" title="线性方程组">
+                线性方程组 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
