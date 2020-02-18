@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-18T08:29:54.661Z">
+<meta property="og:updated_time" content="2020-02-18T08:53:56.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
 <meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
@@ -716,7 +716,7 @@ b_1\alpha_1+...+b_n\alpha_n=0.
 <p><em>证明：任取$\alpha,\beta \in V_1\cap v_2$，则$\alpha+\beta \in V_1 \cap V_2$；任取$\gamma \in V_1 \cap V_2$，则$k\gamma \in V_1\cap V_2$</em></p>
 <p>满足：</p>
 <script type="math/tex; mode=display">
-V_1 \cap V_2 = V_2 \cap V_1 \newline
+V_1 \cap V_2 = V_2 \cap V_1 \\\\
 (V_1 \cap V_2) \cap V_3 = V_1 \cap (V_2 \cap V_3)</script><p>从而$\cap^s_{i=1}V_i:=V_1 \cap V_2 \cap … \cap V_s$也是$V$的一个子空间。</p>
 <h4 id="子空间的并"><a href="#子空间的并" class="headerlink" title="子空间的并"></a>子空间的并</h4><p>子空间的并不是子空间</p>
 <h4 id="子空间的和"><a href="#子空间的和" class="headerlink" title="子空间的和"></a>子空间的和</h4><p>设$V_1,V_2$都是$V$的一个子空间，</p>
@@ -725,8 +725,8 @@ V_1+V_2:=\begin{Bmatrix}\alpha_1+\alpha_2\quad | \quad \alpha_1\in V_1,\alpha_2\
 <p>把$V_1+V_2$称为$V_1$与$V_2$的<strong>和</strong>。</p>
 <p>满足：</p>
 <script type="math/tex; mode=display">
-V_1+V_2=V_2+V_1 \newline
-(V_1+V_2)+V_3=V_1+(V_2+V_3) \newline 
+V_1+V_2=V_2+V_1 \\\\
+(V_1+V_2)+V_3=V_1+(V_2+V_3) \\\\ 
 \sum^s_{i=1}V_i:=V_1+V_2+...+V_s也是V的一个子空间</script><p><strong>命题1</strong>：$L(\alpha_1,…,\alpha_s)+L(\beta_1,…,\beta_r)=L(\alpha_1,…,\alpha_s,\beta,…,\beta_r)$</p>
 <p><strong>定理2(<font color="red">子空间的维数公式</font>)</strong>：设$V_1,V_2$都是$V$的<font color="red">有限维</font>子空间</p>
 <script type="math/tex; mode=display">
@@ -744,8 +744,8 @@ dim(V_1+V_2)=dimV_1+dimV_2-dim(V_1\cap V_2)</script><p><em>证明：</em>$V_1\ca
 <p>故$\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m},\gamma_1,…,\gamma_{n_2-m}$线性无关。</p>
 <p>从而</p>
 <script type="math/tex; mode=display">
-dim(V_1+V_2)=m+n_1-m+n_2-m \newline
-=n1+n_2-m \newline
+dim(V_1+V_2)=m+n_1-m+n_2-m \\\\
+=n1+n_2-m \\\\
 =dim(V_1)+dim(V_2)-dim(V_1\cap V_2)</script><p><strong>推论1：</strong>$dim(V_1+V_2)=dimV_1+dimV_2 \longleftrightarrow V_1 \cap V_2=0$</p>
 <h5 id="子空间的直和（25）"><a href="#子空间的直和（25）" class="headerlink" title="子空间的直和（25）"></a>子空间的直和（25）</h5><p>设$V_1,V_2$都是$V$的一个子空间，如果$V_1+V_2$中的每个向量$\alpha$表示成$\alpha=\alpha_1+\alpha_2,\alpha_1 \in V_1,\alpha_2 \in V_2$<font color="red">表法唯一</font>，那么称$V_1+V_2$是<strong>直和</strong>。</p>
 <p><strong>定理3</strong>：设$V_1,V_2$都是$V$的一个子空间，则下列四个命题等价</p>
@@ -783,7 +783,7 @@ dim(V_1+V_2)=m+n_1-m+n_2-m \newline
 <p>$\underline{以下将研究第三种途径} \Longrightarrow 对数域K上的所有线性空间进行分类$</p>
 <h3 id="线性空间的同构"><a href="#线性空间的同构" class="headerlink" title="线性空间的同构"></a>线性空间的同构</h3><p><strong>定义1</strong>：设$V$和$V^{‘}$都是数域$K$上的线性空间，如果$V$到$V^{‘}$有一个<font color="red">双射</font>，并且</p>
 <script type="math/tex; mode=display">
-\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta) ,\forall \alpha,\beta \in V(保持加法) \newline
+\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta) ,\forall \alpha,\beta \in V(保持加法) \\\\
 \sigma(k\alpha)=k\sigma(\alpha),\forall \alpha \in V,\forall k \in K(保持数乘)</script><p>那么称$\sigma$是$V$到$V^{‘}$的一个<font color="red">同构映射</font>，此时称$V$与$V^{‘}$是<font color="red">同构</font>的，记作$V \cong V^{‘}$。</p>
 <p>设$\sigma$是$V$到$V^{‘}$的一个同构映射</p>
 <p><strong>性质1</strong>：$\sigma(0)=0^{‘},0 \in V,0^{‘} \in V^{‘}$</p>
