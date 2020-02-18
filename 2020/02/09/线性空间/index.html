@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-18T08:53:56.506Z">
+<meta property="og:updated_time" content="2020-02-18T09:11:04.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
 <meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
@@ -599,7 +599,7 @@ x_1a_{s1}+...+x_ra_{sr}=0
 <h3 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h3><p><strong>定理1</strong>：数域$K$上$s \times n$阶梯形矩阵$J$的列秩$=$行秩$=J$的非0行的个数。$\underline{并且J的主元所在的列构成J的列向量组的一个极大线性无关组。}$</p>
 <p><strong>定理2</strong>：矩阵的初等行变换不改变矩阵的行秩。</p>
 <p><strong>定理3</strong>：矩阵的初等行变换不改变矩阵的列向量组的线性相关性，从而不改变矩阵的列秩。设$A\xrightarrow{初等行变换}B$，若$B$的第$j_1,…,j_r$列构成$B$的列向量组的极大线性无关组，则$A$的第$j_1,…,j_r$列构成$A$的列向量组的极大线性无关组。</p>
-<p><strong>定理4</strong>：任一矩阵的行秩等于列秩。<br><em>证明：把$A\xrightarrow{初等行变换}$$J$(阶梯形)，从而$A$的行秩$\xlongequal{定理2} J$的行秩$\xlongequal{定理1} J$的列秩$\xlongequal{定理3} A$的列秩。</em></p>
+<p><strong>定理4</strong>：任一矩阵的行秩等于列秩。<br><em>证明：把$A\xrightarrow{初等行变换}$$J$(阶梯形)，从而$A$的行秩$\xlongequal{\text{定理2}} J$的行秩$\xlongequal{\text{定理1}} J$的列秩$\xlongequal{\text{定理3}} A$的列秩。</em></p>
 <p><strong>定义1</strong>：矩阵$A$的行秩与列秩统称为矩阵$A$的<strong>秩</strong>，记作$rank(A)$。</p>
 <p><strong>推论</strong>：$rank(A)=rank(A^T)$</p>
 <p>若$A\xrightarrow{初等列变换}B$，同理可证得，$rank(A)=rank(B)$。</p>
@@ -721,7 +721,7 @@ V_1 \cap V_2 = V_2 \cap V_1 \\\\
 <h4 id="子空间的并"><a href="#子空间的并" class="headerlink" title="子空间的并"></a>子空间的并</h4><p>子空间的并不是子空间</p>
 <h4 id="子空间的和"><a href="#子空间的和" class="headerlink" title="子空间的和"></a>子空间的和</h4><p>设$V_1,V_2$都是$V$的一个子空间，</p>
 <script type="math/tex; mode=display">
-V_1+V_2:=\begin{Bmatrix}\alpha_1+\alpha_2\quad | \quad \alpha_1\in V_1,\alpha_2\in V_2\end{Bmatrix}</script><p><em>证明：由于$0=0+0$，因此$0\in V_1+V_2$；任取$V_1+V_2$的两个向量$\alpha_1+\alpha_2,\beta_1+\beta_2,(\alpha_1,\beta_1\in V_1,\alpha_2,\beta_2\in V_2)$，则$(\alpha_1+\alpha_2)+(\beta_1+\beta_2)=(\alpha_1+\beta_2)+(\alpha_2+\beta_2)\in V_1+V_2$；又取$k\in K,k(\alpha_1+\alpha_2)=k\alpha_1+k\alpha_2\in V_1+V_2$。因此$V_1+V_2$是$V$的一个子空间。</em></p>
+V_1+V_2:=\begin{Bmatrix}\alpha_1+\alpha_2\quad | \quad \alpha_1\in V_1,\alpha_2\in V_2\end{Bmatrix}</script><p><em>证明</em>：由于$0=0+0$，因此$0\in V_1+V_2$；任取$V_1+V_2$的两个向量$\alpha_1+\alpha_2,\beta_1+\beta_2,(\alpha_1,\beta_1\in V_1,\alpha_2,\beta_2\in V_2)$，则$(\alpha_1+\alpha_2)+(\beta_1+\beta_2)=(\alpha_1+\beta_2)+(\alpha_2+\beta_2)\in V_1+V_2$；又取$k\in K,k(\alpha_1+\alpha_2)=k\alpha_1+k\alpha_2\in V_1+V_2$。因此$V_1+V_2$是$V$的一个子空间。</p>
 <p>把$V_1+V_2$称为$V_1$与$V_2$的<strong>和</strong>。</p>
 <p>满足：</p>
 <script type="math/tex; mode=display">
@@ -730,7 +730,7 @@ V_1+V_2=V_2+V_1 \\\\
 \sum^s_{i=1}V_i:=V_1+V_2+...+V_s也是V的一个子空间</script><p><strong>命题1</strong>：$L(\alpha_1,…,\alpha_s)+L(\beta_1,…,\beta_r)=L(\alpha_1,…,\alpha_s,\beta,…,\beta_r)$</p>
 <p><strong>定理2(<font color="red">子空间的维数公式</font>)</strong>：设$V_1,V_2$都是$V$的<font color="red">有限维</font>子空间</p>
 <script type="math/tex; mode=display">
-dim(V_1+V_2)=dimV_1+dimV_2-dim(V_1\cap V_2)</script><p><em>证明：</em>$V_1\cap V_2$中取一个基$\alpha_!,…,\alpha_m$，把它扩充成$V_1$的一个基$\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m}$，$V_2$的一个基$\alpha_1,…,\alpha_m,\gamma_1,…,\gamma_{n_2-m}$，则$V_1+V_2=L(\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m})+L(\alpha_1,…,\alpha_m,\gamma_1,…,\gamma_{n_2-m}) \xlongequal{命题1} L(\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m},\gamma_1,…,\gamma_{n_2-m})$</p>
+dim(V_1+V_2)=dimV_1+dimV_2-dim(V_1\cap V_2)</script><p><em>证明：</em>$V_1\cap V_2$中取一个基$\alpha_!,…,\alpha_m$，把它扩充成$V_1$的一个基$\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m}$，$V_2$的一个基$\alpha_1,…,\alpha_m,\gamma_1,…,\gamma_{n_2-m}$，则$V_1+V_2=L(\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m})+L(\alpha_1,…,\alpha_m,\gamma_1,…,\gamma_{n_2-m}) \xlongequal{\text{命题1}} L(\alpha_1,…,\alpha_m,\beta_1,…,\beta_{n_1-m},\gamma_1,…,\gamma_{n_2-m})$</p>
 <p>设$k_1\alpha_1+…+k_m\alpha_m+p_1\beta_1+…+p_{n_1-m}\beta_{n_1-m}+q_1\gamma_1+…+q_{n_2-m}\gamma_{n_2-m}=0,\quad(1)$</p>
 <p>因此$q_1\gamma_1+…+q_{n_2-m}\gamma_{n_2-m}=-k_1\alpha_1-…-k_m\alpha_m-p_1\beta_1-…-p_{n_1-m}\beta_{n_1-m}$</p>
 <p>而$q_1\gamma_1+…+q_{n_2-m}\gamma_{n_2-m} \in V_2$</p>
