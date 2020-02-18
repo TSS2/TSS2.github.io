@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="童双双">
 <meta property="og:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-17T09:20:51.384Z">
+<meta property="og:updated_time" content="2020-02-18T08:29:54.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性空间">
 <meta name="twitter:description" content="线性空间 线性空间的定义 线性空间的性质 线性子空间 生成子空间   线性相关与线性无关 极大线性无关组，向量组的秩   线性空间的结构 基 基与维数 矩阵的秩 线性方程组有解判别定理 齐次线性方程组解集的结构 非齐次线性方程组解集的结构 子空间的运算 子空间的交 子空间的并 子空间的和 子空间的直和（25）     线性空间的同构   线性空间的度量     线性空间线性空间的定义若对应法则">
@@ -446,10 +446,15 @@
 <p>若$f(A)=B$,则称$f$为一个满射；</p>
 <p>若$A$中的不同元素在$f$下的像不同，则称$f$是一个单射；</p>
 <p>若$f$既是一个满射又是一个单射，则称$f$是一个双射（或一一对应）。</p>
-<p>$S \times M:=\begin{Bmatrix}(a,b)|a \in S,b \in M\end{Bmatrix}$称为$S$与$M$的<font color="red">笛卡儿积</font>。</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    满射:\forall \alpha \in B,\exists \beta \in A,使得f(\beta)=\alpha \\\\
+    单射:f(\alpha_1)=f(\alpha_2) \Longleftrightarrow \alpha_1=\alpha_2,\alpha_1,\alpha_2 \in A
+\end{cases}
+\xrightarrow{既是单射又是满射}双射(一一对应)</script><p>$S \times M:=\begin{Bmatrix}(a,b)|a \in S,b \in M\end{Bmatrix}$称为$S$与$M$的<font color="red">笛卡儿积</font>。</p>
 <p>定义：非空集合$S$上的一个<font color="red">代数运算</font>是指$S \times S$到$S$的一个映射。</p>
-<p>定义：设$V$是一个非空集合，$K$是一个数域，<br>如果$V$上有一个运算，称为<strong>加法</strong>，即$V \times V \longrightarrow V:(\alpha,\beta) \longmapsto\alpha + \beta$，<br>如果$K$与$v$之间有一个运算，称为<strong>数量乘法</strong>，即$K \times V \longrightarrow V:(k,\alpha) \longmapsto k\alpha$。</p>
-<p>令$V$是一个非空集合，$P$是一个数域，在集合$V$的元素之间定义了一种代数运算，叫加法；在数域$P$与集合$V$的元素之间还定义了一种运算，叫做数量乘法。如果加法与数量乘法满足下述规则，那么$V$成为数域$P$上的<font color="red">线性空间</font>。把$V$中的元素成为一个向量，线性空间也称为向量空间。如下：</p>
+<p>定义：设$V$是一个非空集合，$K$是一个数域，<br>如果$V$上有一个运算，称为<strong>加法</strong>，即$V \times V \longrightarrow V:(\alpha,\beta) \longmapsto\alpha + \beta$，<br>如果$K$与$V$之间有一个运算，称为<strong>数量乘法</strong>，即$K \times V \longrightarrow V:(k,\alpha) \longmapsto k\alpha$。</p>
+<p>令$V$是一个非空集合，$P$是一个数域，在集合$V$的元素之间定义了一种代数运算，叫加法；在数域$P$与集合$V$的元素之间还定义了一种运算，叫做数量乘法。如果加法与数量乘法满足下述规则，那么$V$成为数域$P$上的<font color="red">线性空间</font>。把$V$中的元素称为一个向量，线性空间也称为向量空间。如下：</p>
 <p>加法满足下面四条规则：</p>
 <p>$1.\alpha + \beta = \beta + \alpha$</p>
 <p>$2.(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$</p>
@@ -463,9 +468,9 @@
 <p>$8.k(\alpha + \beta) = k\alpha + k\beta$</p>
 <p>在以上规则中，$k,l$表示数域$P$中任意数；$\alpha,\beta,\gamma$等表示集合$V$中任意元素。</p>
 <p>例1：几何空间</p>
-<p>{以原点O为起点的所有向量}</p>
+<p>$\begin{Bmatrix}以原点O为起点的所有向量\end{Bmatrix}$</p>
 <p>例2： $K^n:=\begin{Bmatrix}(\alpha_1,\alpha_2,…,\alpha_n)|\alpha_i \in K,i=1,2,…,n\end{Bmatrix}$是数域$K$上的一个线性空间。</p>
-<p>例3：$R^X:=${非空集合$X$到$R$的映射}</p>
+<p>例3：$R^X:=\begin{Bmatrix}非空集合X到R的映射\end{Bmatrix}$</p>
 <p>规定：</p>
 <script type="math/tex; mode=display">
 (f+g)(x) := f(x) + g(x),\forall x \in X</script><script type="math/tex; mode=display">
@@ -483,7 +488,7 @@
 <p>(1)若$\alpha,\beta \in U$,则$\alpha + \beta \in U \quad$($U$对于$V$的加法封闭)</p>
 <p>(2)若$\alpha \in U,k \in K$,则$k\alpha \in U \quad$($U$对于$V$的数量乘法封闭)</p>
 <p>定理：如果线性空间$V$的一个非空集合$W$对于$V$的两种运算封闭，那么$W$是一个子空间。</p>
-<h3 id="生成子空间"><a href="#生成子空间" class="headerlink" title="生成子空间"></a>生成子空间</h3><p>令$W=\begin{Bmatrix}k_1\alpha_1+k_2\alpha_2+…+k_s\alpha_s|k_1,…,k_s \in K\end{Bmatrix},0 \in W$,易验证W对于V的加法和数量乘法封闭，因此W是V的一个子空间，称它是由向量组$\alpha_1,\alpha_2,…,\alpha_s$<font color="red">生成的子空间</font>，记作$L(\alpha_1,…,\alpha_s)$或者$&lt;\alpha_1,…,\alpha_s&gt;$。</p>
+<h3 id="生成子空间"><a href="#生成子空间" class="headerlink" title="生成子空间"></a>生成子空间</h3><p>令$W=\begin{Bmatrix}k_1\alpha_1+k_2\alpha_2+…+k_s\alpha_s|k_1,…,k_s \in K\end{Bmatrix},0 \in W$,易验证$W$对于$V$的加法和数量乘法封闭，因此$W$是$V$的一个子空间，称它是由向量组$\alpha_1,\alpha_2,…,\alpha_s$<font color="red">生成的子空间</font>，记作$L(\alpha_1,…,\alpha_s)$或者$&lt;\alpha_1,…,\alpha_s&gt;$。</p>
 <p>$\beta \in L(\alpha_1,\alpha_2,…,\alpha_s) \Longleftrightarrow$$K$中存在一组数$k_1,k_2,…,k_s$使得$\beta=k_1\alpha_1+k_2\alpha_2+…+k_s\alpha_s$,此时称$\beta$可以由向量组$\alpha_1.\alpha_2,…,\alpha_s$<font color="red">线性表出</font>。</p>
 <p>因此，对于方程组</p>
 <script type="math/tex; mode=display">
@@ -560,11 +565,23 @@ x_1a_{s1}+...+x_ra_{sr}=0
 
 <h2 id="线性空间的结构"><a href="#线性空间的结构" class="headerlink" title="线性空间的结构"></a>线性空间的结构</h2><p>设$V$是数域$K$上的线性空间</p>
 <p><strong>定义</strong>：$V$的一个有限子集$\begin{Bmatrix} \alpha_1,…,\alpha_s \end{Bmatrix}$线性相(无)关$:\Longleftrightarrow$向量组$\alpha_1,…,\alpha_s$线性相(无)关；<br>$V$的一个无限子集$S$线性相关$:\Longleftrightarrow S$有一个有限子集是线性相关。<br>从而$V$的无限子集$S$线性无关$:\Longleftrightarrow S$的任何一个有限子集都线性无关。空集规定成线性无关。</p>
+<pre class="mermaid">graph LR;
+线性空间-->有限子集
+线性空间-->无限子集
+有限子集--向量组线性无关-->有限子集线性无关
+有限子集--向量组线性相关-->有限子集线性相关
+无限子集--有一个有限子集线性相关-->无限子集线性相关
+无限子集--任何一个有限子集线性无关-->无限子集线性无关</pre>
+
 <h3 id="基"><a href="#基" class="headerlink" title="基"></a>基</h3><p><strong>定义</strong>：设$V$是数域$K$上的线性空间，$V$的一个子集$S$如果满足下述两个条件：</p>
 <p>1.$S$是线性无关的；</p>
 <p>2.$V$中的任一向量可以由$S$中的有限多个向量线性表出。</p>
 <p>那么称$S$是$V$的一个<strong>基</strong>。</p>
-<p>在上述定义中，若$S=\begin{Bmatrix} \alpha_1,…,\alpha_s \end{Bmatrix}$，则向量组$\alpha_1,…,\alpha_s$是$V$的一个(有序)基。</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    \alpha_1,...,\alpha_s 线性无关,\alpha_i \in V,i=1,2,...,s \\\\
+    \forall \alpha \in V,都有\alpha=k_1\alpha_1+...+k_s\alpha_s
+\end{cases}</script><p>在上述定义中，若$S=\begin{Bmatrix} \alpha_1,…,\alpha_s \end{Bmatrix}$，则向量组$\alpha_1,…,\alpha_s$是$V$的一个(有序)基。</p>
 <p><strong>定理</strong>：任何一个数域上的任何一个线性空间都有一个基。</p>
 <p><strong>定义</strong>：若$V$有一个基是有限子集，则称$V$是$\underline{有限维的}$；若$V$有一个基是无限子集，则称$V$是$\underline{无限维的}$。</p>
 <p><strong>定理</strong>：若$V$是$\underline{有限维的}$，则$V$的任意两个基所含向量的个数是相等的。</p>
@@ -775,7 +792,6 @@ dim(V_1+V_2)=m+n_1-m+n_2-m \newline
 <p><strong>性质4</strong>：$V$中$\alpha_1,…,\alpha_s$线性相关$\Longleftrightarrow$$V^{‘}$中$\sigma(\alpha_1),…,\sigma(\alpha_s)$线性相关。</p>
 <p><strong>性质5</strong>：$\alpha_1,…,\alpha_n$是$V$的一个基$\Longleftrightarrow$$\sigma(\alpha_1,…,\sigma(\alpha_n))$是$V^{‘}$的一个基。</p>
 <p><strong>定理1</strong>：数域$K$上两个有限维线性空间$V$和$V^{‘}$同构$\Longleftrightarrow dimV=dimV^{‘}$</p>
-<p>46 13</p>
 <h2 id="线性空间的度量"><a href="#线性空间的度量" class="headerlink" title="线性空间的度量"></a>线性空间的度量</h2>
       
     </div>
@@ -806,8 +822,8 @@ dim(V_1+V_2)=m+n_1-m+n_2-m \newline
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/05/timu/" rel="next" title="行列式">
-                <i class="fa fa-chevron-left"></i> 行列式
+              <a href="/2020/02/09/线性方程组/" rel="next" title="线性方程组">
+                <i class="fa fa-chevron-left"></i> 线性方程组
               </a>
             
           </div>
@@ -816,8 +832,8 @@ dim(V_1+V_2)=m+n_1-m+n_2-m \newline
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/09/线性方程组/" rel="prev" title="线性方程组">
-                线性方程组 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/09/note/" rel="prev" title="整理">
+                整理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -935,7 +951,7 @@ dim(V_1+V_2)=m+n_1-m+n_2-m \newline
             <h3 class="widget-title">Tag Cloud</h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow2-0/">Tensorflow2.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keras/">keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协同过滤/">协同过滤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐算法/">推荐算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐系统/">推荐系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数列/">数列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模型评估与选择/">模型评估与选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性方程组/">线性方程组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性空间/">线性空间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/行列式/">行列式</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow2-0/">Tensorflow2.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keras/">keras</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协同过滤/">协同过滤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐算法/">推荐算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推荐系统/">推荐系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数列/">数列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模型评估与选择/">模型评估与选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/监督学习/">监督学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性方程组/">线性方程组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性空间/">线性空间</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/行列式/">行列式</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
             </div>
